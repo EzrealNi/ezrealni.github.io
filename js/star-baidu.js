@@ -4,8 +4,8 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	$scope.imgs = [];
 	$scope.cfg = {
 		"startStaffId": 1,
-		"defaultEachNum": 500,
-		"failTotalNum": 100
+		"defaultEachNum": 20,
+		"failTotalNum": 200
 	};
 	$scope.cfg["lastStaffId"] = $scope.cfg.startStaffId;
 	$scope.cfg["staffId"] = $scope.cfg.lastStaffId;
