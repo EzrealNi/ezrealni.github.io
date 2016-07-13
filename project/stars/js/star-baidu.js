@@ -1,6 +1,6 @@
 angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	
-	$scope.progress = false;
+	$scope.loading = false;
 	$scope.loadingProgress = 0;
 	$scope.loadingPercent = {width: "0%"};
 	$scope.imgsData = [];
@@ -32,9 +32,9 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	    windowH = $(window).height(), // current window's height
 	    y = $(window).scrollTop(), // current scroll y
 	    hisTableHeight =  hisTable.height() + hisTable.offset().top, // total height
-	    loadingTop = $("#progress-loading").offset().top;
+	    loadingTop = $("#progress-loading-l").offset().top;
 		/* type1:  */
-		if (y + windowH > hisTableHeight && $scope.progress == false ) {
+		if (y + windowH > hisTableHeight && $scope.loading == false ) {
 			loadNextPage();
 //		    console.log("show loading and do request1.");
 		}
@@ -46,7 +46,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	}, 500);// 250ms 执行一次
 	
 	function loadNextPage(){
-		$scope.progress = true;
+		$scope.loading = true;
 		$scope.cfg["eachNum"] = $scope.cfg.defaultEachNum;
 		$scope.imgsData = [];
 		loadNetImg();
@@ -55,7 +55,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	function loadNetImg(){
 		if($scope.cfg.staffId - $scope.cfg.lastStaffId > $scope.cfg.failTotalNum){
 			$scope.imgs = $scope.imgs.concat($scope.imgsData);
-			$scope.progress = false;
+			$scope.loading = false;
 			return;
 		}
 		var promise = loadImage($scope.cfg.staffId,$scope.cfg.eachNum);
@@ -69,7 +69,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 				$scope.imgsData.push(imgData);
 				if($scope.cfg.eachNum === 0){
 					$scope.imgs = $scope.imgs.concat($scope.imgsData);
-					$scope.progress = false;
+					$scope.loading = false;
 					return;
 				}
 				
