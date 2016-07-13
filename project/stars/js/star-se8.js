@@ -182,7 +182,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 		}else{
 			fixWidth = screenWidth - 60;
 			fixHeight = fixWidth*scaleImg;
-			$("#imgDashboard").css("top",(screenHeight-fixHeight)/2);
+			$("#imgDashboard").css("top",(screenHeight-fixHeight-60)/2);
 		}
 		
 		$("#imgDashboard .modal-dialog").width(fixWidth);
