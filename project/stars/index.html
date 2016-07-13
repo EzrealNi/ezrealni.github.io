@@ -16,20 +16,27 @@
 		<div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" class="placeholder"></div>
 	</div>
 	
-	<div class="row" id="progress-loading" ng-show="progress">
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="spinner"></div>
-<!-- 			<div style="display: inline-block; height: 100%; width: 178px; position: relative; left: 48%;" class="progress progress-xs progress-striped active"> -->
-<!--             	<div class="progress-bar progress-bar-primary" style="width: 100%">Loading the next 20 records</div> -->
-<!--             </div> -->
-		</div>
-	</div>
-	
 	<div id="imgDashboard" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<img id="showImg"/>
 			</div>
+		</div>
+	</div>
+	
+	<div class="loading-zone" id="progress-loading" ng-show="progress">
+		<div class="text">loading...{{loadingProgress}}%</div>
+		<div class="progress progress-striped active">
+			<div ng-style="loadingPercent" class="bar"></div>
+		</div>
+	</div>
+	
+	<div class="row" id="progress-loading1" ng-show="progress1 && !loading">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="spinner"></div>
+<!-- 			<div style="display: inline-block; height: 100%; width: 178px; position: relative; left: 48%;" class="progress progress-xs progress-striped active"> -->
+<!--             	<div class="progress-bar progress-bar-primary" style="width: 100%">Loading the next 20 records</div> -->
+<!--             </div> -->
 		</div>
 	</div>
 
