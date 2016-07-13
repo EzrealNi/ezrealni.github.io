@@ -1,10 +1,13 @@
 angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	
 	$scope.progress = false;
+	$scope.loadingProgress = 0;
+	$scope.loadingPercent = {width: "0%"};
+	$scope.imgsData = [];
 	$scope.imgs = [];
 	$scope.cfg = {
 		"startStaffId": 1,
-		"defaultEachNum": 20,
+		"defaultEachNum": 50,
 		"failTotalNum": 200
 	};
 	$scope.cfg["lastStaffId"] = $scope.cfg.startStaffId;
@@ -42,27 +45,16 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 		}
 	}, 500);// 250ms 执行一次
 	
-	function initPage(){
-		$http.get('data/beautifulGirl.json').success(function(imgs) {
-			$scope.imgs = imgs.sort(function() {
-				return 0.5 - Math.random();
-			})
-		});
-	};
-	
-	function getfinalStaffId(){
-		var nextYear = new Date().getFullYear() + 1;
-		return Number(nextYear.toString().substring(2,4) + "0000");
-	}
-	
 	function loadNextPage(){
 		$scope.progress = true;
 		$scope.cfg["eachNum"] = $scope.cfg.defaultEachNum;
+		$scope.imgsData = [];
 		loadNetImg();
 	}
 	
 	function loadNetImg(){
 		if($scope.cfg.staffId - $scope.cfg.lastStaffId > $scope.cfg.failTotalNum){
+			$scope.imgs = $scope.imgs.concat($scope.imgsData);
 			$scope.progress = false;
 			return;
 		}
@@ -71,20 +63,17 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 			function(imgData){
 				$scope.cfg.lastStaffId = $scope.cfg.staffId;
 				$scope.cfg.eachNum --;
-				$scope.imgs.push(imgData);
+				$scope.cfg.staffId ++;
+				$scope.loadingProgress = ((1 - $scope.cfg.eachNum/$scope.cfg.defaultEachNum)*100).toFixed(2);
+				$scope.loadingPercent = {width: $scope.loadingProgress + "%"};
+				$scope.imgsData.push(imgData);
 				if($scope.cfg.eachNum === 0){
-//					$scope.imgs = $scope.imgs.concat(imgList);
+					$scope.imgs = $scope.imgs.concat($scope.imgsData);
 					$scope.progress = false;
-					$scope.cfg.staffId ++;
 					return;
-				}else{
-					if($scope.cfg.staffId - $scope.cfg.lastStaffId > $scope.cfg.failTotalNum){
-						return;
-					}else{
-						$scope.cfg.staffId ++;
-					}
-					loadNetImg();
 				}
+				
+				loadNetImg();
 			},
 			function(error) {
 				if($scope.cfg.staffId - $scope.cfg.lastStaffId > $scope.cfg.failTotalNum){
