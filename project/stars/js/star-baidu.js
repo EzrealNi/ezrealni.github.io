@@ -172,7 +172,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 			fixWidth = fixHeight/scaleImg;
 			$("#imgDashboard").css("top","0");
 		}else{
-			fixWidth = screenWidth*0.8;
+			fixWidth = screenWidth - 60;
 			fixHeight = fixWidth*scaleImg;
 			$("#imgDashboard").css("top",(screenHeight-fixHeight)/2);
 		}
