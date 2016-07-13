@@ -3,9 +3,9 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	$scope.progress = false;
 	$scope.imgs = [];
 	$scope.cfg = {
-		"startStaffId": 71222091441,
-		"defaultEachNum": 400,
-		"failTotalNum": 50
+		"startStaffId": 1,
+		"defaultEachNum": 1000,
+		"failTotalNum": 500
 	};
 	$scope.cfg["lastStaffId"] = $scope.cfg.startStaffId;
 	$scope.cfg["staffId"] = $scope.cfg.lastStaffId;
@@ -124,7 +124,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	
 	function loadImage(staffId) {
 		var deferred = $q.defer(),
-			imgUrl = "http://www.dunmpt.com/upload/image/20160712/" + staffId + ".jpg",
+			imgUrl = "http://yingbt.com/upload/image/2016-07-14/" + staffId + ".jpg",
 			img = new Image();
 		 
 //		if(img.complete) {
