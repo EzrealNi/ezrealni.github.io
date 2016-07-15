@@ -1,79 +1,89 @@
-body{
-  background: none repeat scroll 0 0 #202020;
-  padding: 0px;
-  margin: 0px;
-  overflow: hidden;
+@font-face {
+    font-family: "PingHei";
+    font-style: normal;
+    font-weight: 200;
+    src: local("☺︎"), url("../font/PingHei-light.woff") format("woff");
 }
 
-.calculator{
-  padding: 0px 1px 0px 0px;
-  width: 100%;
-  height: 100%;
+body {
+	background: none repeat scroll 0 0 #202020;
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+    font-family: "PingHei";
 }
 
-.row{
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  font-size: 0px;
+.calculator {
+	padding: 0px;
+	width: 100%;
+	height: 100%;
 }
 
-.calculator .row:first-child{
-  height: 30%;
+.row {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-size: 0px;
+}
+
+.calculator .row:first-child {
+	height: 30%;
 }
 
 .calculator .row:not(:first-child){
-  height: 14%;
+	height: 14%;
 }
 
-.key{
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  border-width: 1px 0px 0px 1px;
-  border-style: solid;
-  border-color: #202020;
-  width: 25%;
-  height: 100%;
-  text-align: center;
+.key { /*   display: inline-block; */
+	float: left;
+	padding : 0;
+	margin: 0;
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: #A5A6A8;
+	width: 25%;
+	height: 100%;
+	text-align: center;
+	padding: 0;
 }
 
-.zero{
-  width: 50%;
+.zero {
+	width: 50%;
 }
 
-.screen{
-  width: 100%;
-  height: 100%;
-  border: 0px;
-  position: relative;
+.screen {
+	width: 100%;
+	height: 100%;
+	border: 0px;
+	position: relative;
 }
 
-.screen span{
-  color: #f9f9f9;
-  position: absolute;
+.screen span {
+	color: #f9f9f9;
+	position: absolute;
 }
 
-.screen span.bottom{
-  font-size: 30px;
-  bottom: 15px;
-  right: 15px;
+.screen span.bottom {
+	font-size: 30px;
+	bottom: 15px;
+	right: 15px;
 }
 
-.func{
-  background: none repeat scroll 0 0 #c6c7cb;
-  color: #202020;
-  font-size: 40px;
+.func {
+	background: none repeat scroll 0 0 #c6c7cb;
+	color: #202020;
+	font-size: 40px;
 }
 
-.oper{
-  background: none repeat scroll 0 0 #fa8e12;
-  color: #f9f9f9;
-  font-size: 40px;
+.oper {
+	border-right-width: 1px;
+	background: none repeat scroll 0 0 #fa8e12;
+	color: #f9f9f9;
+	font-size: 40px;
 }
 
-.num{
-  background: none repeat scroll 0 0 #d6d7db;
-  color: #202020;
-  font-size: 40px;
+.num {
+	background: none repeat scroll 0 0 #d6d7db;
+	color: #202020;
+	font-size: 50px;
 }
