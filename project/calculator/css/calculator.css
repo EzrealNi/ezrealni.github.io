@@ -2,7 +2,28 @@
     font-family: "PingHei";
     font-style: normal;
     font-weight: 200;
-    src: local("☺︎"), url("../font/PingHei-light.woff") format("woff");
+    src: local("鈽猴笌"), url("../font/PingHei-light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "myriad-bold";
+    font-style: normal;
+    font-weight: 200;
+    src: local("鈽猴笌"), url("../font/myriad-set-pro_bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "myriad-text";
+    font-style: normal;
+    font-weight: 200;
+    src: local("鈽猴笌"), url("../font/myriad-set-pro_text.woff") format("woff");
+}
+
+@font-face {
+    font-family: "myriad-thin";
+    font-style: normal;
+    font-weight: 200;
+    src: local("鈽猴笌"), url("../font/myriad-set-pro_thin.woff") format("woff");
 }
 
 body {
@@ -10,7 +31,7 @@ body {
 	padding: 0px;
 	margin: 0px;
 	overflow: hidden;
-    font-family: "PingHei";
+	-moz-user-select: none;
 }
 
 .calculator {
@@ -86,4 +107,12 @@ body {
 	background: none repeat scroll 0 0 #d6d7db;
 	color: #202020;
 	font-size: 50px;
+}
+
+.select{
+	border-color: #202020;
+}
+
+.bottom-select{
+	border-bottom-color: #202020;
 }
