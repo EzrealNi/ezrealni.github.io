@@ -2,28 +2,28 @@
     font-family: "PingHei";
     font-style: normal;
     font-weight: 200;
-    src: local("鈽猴笌"), url("../font/PingHei-light.woff") format("woff");
+    src: local("☺︎"), url("../font/PingHei-light.woff") format("woff");
 }
 
 @font-face {
     font-family: "myriad-bold";
     font-style: normal;
     font-weight: 200;
-    src: local("鈽猴笌"), url("../font/myriad-set-pro_bold.woff") format("woff");
+    src: local("☺︎"), url("../font/myriad-set-pro_bold.woff") format("woff");
 }
 
 @font-face {
     font-family: "myriad-text";
     font-style: normal;
     font-weight: 200;
-    src: local("鈽猴笌"), url("../font/myriad-set-pro_text.woff") format("woff");
+    src: local("☺︎"), url("../font/myriad-set-pro_text.woff") format("woff");
 }
 
 @font-face {
     font-family: "myriad-thin";
     font-style: normal;
     font-weight: 200;
-    src: local("鈽猴笌"), url("../font/myriad-set-pro_thin.woff") format("woff");
+    src: local("☺︎"), url("../font/myriad-set-pro_thin.woff") format("woff");
 }
 
 body {
@@ -85,9 +85,11 @@ body {
 }
 
 .screen span.bottom {
-	font-size: 30px;
-	bottom: 15px;
+	bottom: 0px;
 	right: 15px;
+	font-size: 6rem;
+    font-weight: 100;
+    letter-spacing: -6px;
 }
 
 .func {

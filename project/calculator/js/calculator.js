@@ -1,3 +1,6 @@
+var lastNum = "0",
+	currentNum = "0";
+
 $(function() {
 	setKeyWidth();
 	blindEvent();
@@ -17,6 +20,16 @@ function blindEvent(){
 		$(".calcula.bottom-select").removeClass("bottom-select");
 		$(this).addClass("select");
 		$(this).parent().prev().children(".calcula").addClass("bottom-select");
+	});
+	
+	$(".calculator > .row").on("click", ".num", function(){
+		var clickNum = $(this).find("span").text();
+		if(currentNum == "0" && clickNum == "0"){
+			return;
+		}else{
+			currentNum += clickNum;
+		}
+		$(".screen span").html(currentNum);
 	});
 }
 
