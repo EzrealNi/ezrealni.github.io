@@ -1,5 +1,6 @@
 var lastNum = "0",
-	currentNum = "0";
+	currentNum = "0",
+	keyValueObj = {"1": "C","2": "+/-","3": "%","4": "÷","5": "7","6": "8","7": "9","8": "×","9": "4","10": "5","11": "6","12": "-","13": "1","14": "2","15": "3","16": "+","17": "0","18": ".","19": "="};
 
 $(function() {
 	setKeyWidth();
@@ -23,14 +24,38 @@ function blindEvent(){
 	});
 	
 	$(".calculator > .row").on("click", ".num", function(){
-		var clickNum = $(this).find("span").text();
-		if(currentNum == "0" && clickNum == "0"){
+		var keyCode = $(this).find("span").attr("keyCode"),
+			keyValue = keyValueObj[keyCode];
+		if(currentNum.replace(".","").replace(new RegExp(/(,)/g),'').length >= 9){
+			return;
+		}else if(currentNum == "0" && keyCode != "18"){
+			currentNum = keyValue;
+		}else if(currentNum.indexOf(".")  > -1 && keyCode == "18"){
 			return;
 		}else{
-			currentNum += clickNum;
+			currentNum += keyValue;
 		}
 		$(".screen span").html(currentNum);
 	});
+	
+	$(".calculator > .row").on("click", ".func", function(){
+		var keyCode = $(this).find("span").attr("keyCode"),
+			keyValue = keyValueObj[keyCode];
+		var clickKey = $(this).find("span").text();
+		if(keyCode == "1"){
+			currentNum = "0";
+		}else if(keyCode == "2"){
+			currentNum = (Number(currentNum)*(-1)).toString();
+		}else if(keyCode == "3"){
+			currentNum = (Number(currentNum)/100).toString();
+		}
+		$(".screen span").html(currentNum);
+	});
+}
+
+function showCurrentNum(){
+	var splitNum = currentNum.split(".");
+	
 }
 
 $(window).resize(function() {
