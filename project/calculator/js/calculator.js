@@ -44,6 +44,8 @@ function blindEvent(){
 		var keyCode = $(this).find("span").attr("keyCode");
 		if(keyCode == "1"){
 			currentNum = "0";
+			$(".calcula.select").removeClass("select");
+			$(".calcula.bottom-select").removeClass("bottom-select");
 		}else if(keyCode == "2"){
 			currentNum = (Number(currentNum)*(-1)).toString();
 		}else if(keyCode == "3"){
@@ -96,6 +98,11 @@ function showCurrentNum(){
 		$(".screen span").removeClass(fontClass).addClass("font-big");
 	}else{
 		$(".screen span").removeClass(fontClass).addClass("font-length-"+showCurrentNum.length);
+	}
+	if(showCurrentNum === "0"){
+		$(".key.func:first").find("span").html("AC");
+	}else{
+		$(".key.func:first").find("span").html("C");
 	}
 	$(".screen span").html(showCurrentNum);
 }
