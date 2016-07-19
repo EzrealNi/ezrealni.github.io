@@ -3,7 +3,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	$scope.progress = false;
 	$scope.imgs = [];
 	$scope.cfg = {
-		"startStaffId": 16,
+		"startStaffId": 1300,
 		"defaultEachNum": 1000,
 		"failTotalNum": 500
 	};

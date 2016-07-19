@@ -135,6 +135,10 @@ body {
 	font-size: 50px;
 }
 
+.num:active,.func:active{
+	background: none repeat scroll 0 0 #B3B3B3;
+}
+
 .select{
 	border-color: #202020;
 }

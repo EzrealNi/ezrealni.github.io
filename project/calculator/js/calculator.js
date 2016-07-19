@@ -26,6 +26,9 @@ function blindEvent(){
 	});
 	
 	$(".calculator > .row").on("click", ".num", function(){
+		if(!Number(currentNum)){
+			currentNum = "0";
+		}
 		var keyCode = $(this).find("span").attr("keyCode"),
 			keyValue = keyValueObj[keyCode];
 		if(currentNum.replace(".","").replace(new RegExp(/(,)/g),'').length >= 9){
@@ -41,6 +44,9 @@ function blindEvent(){
 	});
 	
 	$(".calculator > .row").on("click", ".func", function(){
+		if(!Number(currentNum)){
+			currentNum = "0";
+		}
 		var keyCode = $(this).find("span").attr("keyCode");
 		if(keyCode == "1"){
 			currentNum = "0";
@@ -55,6 +61,9 @@ function blindEvent(){
 	});
 	
 	$(".calculator > .row").on("click", ".result", function(){
+		if(!Number(currentNum)){
+			currentNum = "0";
+		}
 		var selectKeyCode = $(".calcula.select").find("span").attr("keyCode"),
 			integerLastNum = Number(lastNum),
 			integerCurrentNum = Number(currentNum),
@@ -68,7 +77,11 @@ function blindEvent(){
 		}else if(selectKeyCode == "8"){
 			resultNum = (integerLastNum * integerCurrentNum).toString();
 		}else if(selectKeyCode == "4"){
-			resultNum = (integerLastNum / integerCurrentNum).toString();
+			if(integerCurrentNum == 0){
+				resultNum = "错误";
+			}else{
+				resultNum = (integerLastNum / integerCurrentNum).toString();
+			}
 		}
 		$(".calcula.select").removeClass("select");
 		$(".calcula.bottom-select").removeClass("bottom-select");
@@ -78,19 +91,32 @@ function blindEvent(){
 }
 
 function showCurrentNum(){
-	var splitNum = currentNum.split("."),
-		integerPart = splitNum[0],
-		decimalPart = splitNum[1] ? splitNum[1] : "",
+	var formatCurrentNum = currentNum,
 		showCurrentNum = "";
-	if(integerPart.length > 3 && integerPart.length <= 6){
-		showCurrentNum = integerPart.slice(0,integerPart.length-3) + "," + integerPart.slice(integerPart.length-3);
-	}else if(integerPart.length > 6 && integerPart.length <= 9){
-		showCurrentNum = integerPart.slice(0,integerPart.length-6) + "," + integerPart.slice(integerPart.length-6,integerPart.length-3) + "," + integerPart.slice(integerPart.length-3);
-	}else{
-		showCurrentNum = integerPart;
+	if(formatCurrentNum.split("e")[0].replace(".","").replace(new RegExp(/(,)/g),'').length > 9){
+		formatCurrentNum = (Number(formatCurrentNum)).toPrecision(8).indexOf("e")  > -1 ? (Number(formatCurrentNum)).toPrecision(6) : (Number(formatCurrentNum)).toPrecision(8);
+		formatCurrentNum = Number(formatCurrentNum).toString();
+		if(formatCurrentNum > -1 && formatCurrentNum < 1 && formatCurrentNum.indexOf("e") === -1){
+			formatCurrentNum = Number(Number(formatCurrentNum).toFixed(8)).toString();
+		}
 	}
-	if(currentNum.indexOf(".")  > -1){
-		showCurrentNum += "." + decimalPart;
+	
+	if(formatCurrentNum.indexOf("e") === -1){
+		var splitNum = formatCurrentNum.split("."),
+			integerPart = splitNum[0],
+			decimalPart = splitNum[1] ? splitNum[1] : "";
+		if(integerPart.length > 3 && integerPart.length <= 6){
+			showCurrentNum = integerPart.slice(0,integerPart.length-3) + "," + integerPart.slice(integerPart.length-3);
+		}else if(integerPart.length > 6 && integerPart.length <= 9){
+			showCurrentNum = integerPart.slice(0,integerPart.length-6) + "," + integerPart.slice(integerPart.length-6,integerPart.length-3) + "," + integerPart.slice(integerPart.length-3);
+		}else{
+			showCurrentNum = integerPart;
+		}
+		if(formatCurrentNum.indexOf(".")  > -1){
+			showCurrentNum += "." + decimalPart;
+		}
+	}else{
+		showCurrentNum = formatCurrentNum;
 	}
 	
 	var fontClass = "font-big font-length-8 font-length-9 font-length-10 font-length-11 font-length-12";
