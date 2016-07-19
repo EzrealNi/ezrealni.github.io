@@ -87,9 +87,33 @@ body {
 .screen span.bottom {
 	bottom: 0px;
 	right: 15px;
-	font-size: 6rem;
+	font-size: 96px;
     font-weight: 100;
     letter-spacing: -6px;
+}
+
+.font-big{
+	font-size: 30vw!important;
+}
+
+.font-length-8{
+	font-size: 26vw!important;
+}
+
+.font-length-9{
+	font-size: 24vw!important;
+}
+
+.font-length-10{
+	font-size: 22vw!important;
+}
+
+.font-length-11{
+	font-size: 20vw!important;
+}
+
+.font-length-12{
+	font-size: 18vw!important;
 }
 
 .func {

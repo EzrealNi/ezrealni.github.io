@@ -21,6 +21,8 @@ function blindEvent(){
 		$(".calcula.bottom-select").removeClass("bottom-select");
 		$(this).addClass("select");
 		$(this).parent().prev().children(".calcula").addClass("bottom-select");
+		lastNum = currentNum;
+		currentNum = "0";
 	});
 	
 	$(".calculator > .row").on("click", ".num", function(){
@@ -35,13 +37,11 @@ function blindEvent(){
 		}else{
 			currentNum += keyValue;
 		}
-		$(".screen span").html(currentNum);
+		showCurrentNum();
 	});
 	
 	$(".calculator > .row").on("click", ".func", function(){
-		var keyCode = $(this).find("span").attr("keyCode"),
-			keyValue = keyValueObj[keyCode];
-		var clickKey = $(this).find("span").text();
+		var keyCode = $(this).find("span").attr("keyCode");
 		if(keyCode == "1"){
 			currentNum = "0";
 		}else if(keyCode == "2"){
@@ -49,13 +49,55 @@ function blindEvent(){
 		}else if(keyCode == "3"){
 			currentNum = (Number(currentNum)/100).toString();
 		}
-		$(".screen span").html(currentNum);
+		showCurrentNum();
+	});
+	
+	$(".calculator > .row").on("click", ".result", function(){
+		var selectKeyCode = $(".calcula.select").find("span").attr("keyCode"),
+			integerLastNum = Number(lastNum),
+			integerCurrentNum = Number(currentNum),
+			resultNum = "";
+		if(!selectKeyCode){
+			return;
+		}else if(selectKeyCode == "16"){
+			resultNum = (integerLastNum + integerCurrentNum).toString();
+		}else if(selectKeyCode == "12"){
+			resultNum = (integerLastNum - integerCurrentNum).toString();
+		}else if(selectKeyCode == "8"){
+			resultNum = (integerLastNum * integerCurrentNum).toString();
+		}else if(selectKeyCode == "4"){
+			resultNum = (integerLastNum / integerCurrentNum).toString();
+		}
+		$(".calcula.select").removeClass("select");
+		$(".calcula.bottom-select").removeClass("bottom-select");
+		currentNum = resultNum;
+		showCurrentNum();
 	});
 }
 
 function showCurrentNum(){
-	var splitNum = currentNum.split(".");
+	var splitNum = currentNum.split("."),
+		integerPart = splitNum[0],
+		decimalPart = splitNum[1] ? splitNum[1] : "",
+		showCurrentNum = "";
+	if(integerPart.length > 3 && integerPart.length <= 6){
+		showCurrentNum = integerPart.slice(0,integerPart.length-3) + "," + integerPart.slice(integerPart.length-3);
+	}else if(integerPart.length > 6 && integerPart.length <= 9){
+		showCurrentNum = integerPart.slice(0,integerPart.length-6) + "," + integerPart.slice(integerPart.length-6,integerPart.length-3) + "," + integerPart.slice(integerPart.length-3);
+	}else{
+		showCurrentNum = integerPart;
+	}
+	if(currentNum.indexOf(".")  > -1){
+		showCurrentNum += "." + decimalPart;
+	}
 	
+	var fontClass = "font-big font-length-8 font-length-9 font-length-10 font-length-11 font-length-12";
+	if(showCurrentNum.length <= 7){
+		$(".screen span").removeClass(fontClass).addClass("font-big");
+	}else{
+		$(".screen span").removeClass(fontClass).addClass("font-length-"+showCurrentNum.length);
+	}
+	$(".screen span").html(showCurrentNum);
 }
 
 $(window).resize(function() {
