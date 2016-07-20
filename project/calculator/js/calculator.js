@@ -16,16 +16,16 @@ function setKeyWidth() {
 }
 
 function blindEvent(){
-	$(".calculator > .row").on("click", ".calcula", function(){
+	$(".calculator > .row > .calcula").click( function(){
 		$(".calcula.select").removeClass("select");
 		$(".calcula.bottom-select").removeClass("bottom-select");
 		$(this).addClass("select");
 		$(this).parent().prev().children(".calcula").addClass("bottom-select");
 		lastNum = currentNum;
 		currentNum = "0";
-	});
+	} );
 	
-	$(".calculator > .row").on("click", ".num", function(){
+	$(".calculator > .row > .num").click( function(){
 		if(!isFinite(currentNum)){
 			currentNum = "0";
 		}
@@ -43,7 +43,7 @@ function blindEvent(){
 		showCurrentNum();
 	});
 	
-	$(".calculator > .row").on("click", ".func", function(){
+	$(".calculator > .row > .func").click( function(){
 		if(!Number(currentNum)){
 			currentNum = "0";
 		}
@@ -60,7 +60,7 @@ function blindEvent(){
 		showCurrentNum();
 	});
 	
-	$(".calculator > .row").on("click", ".result", function(){
+	$(".calculator > .row > .result").click( function(){
 		if(!Number(currentNum)){
 			currentNum = "0";
 		}
@@ -84,6 +84,80 @@ function blindEvent(){
 		currentNum = resultNum;
 		showCurrentNum();
 	});
+	
+	
+	
+
+	
+	
+//	$(".calculator > .row").on("click", ".calcula", function(){
+//		$(".calcula.select").removeClass("select");
+//		$(".calcula.bottom-select").removeClass("bottom-select");
+//		$(this).addClass("select");
+//		$(this).parent().prev().children(".calcula").addClass("bottom-select");
+//		lastNum = currentNum;
+//		currentNum = "0";
+//	});
+//	
+//	$(".calculator > .row").on("click", ".num", function(){
+//		if(!isFinite(currentNum)){
+//			currentNum = "0";
+//		}
+//		var keyCode = $(this).find("span").attr("keyCode"),
+//			keyValue = keyValueObj[keyCode];
+//		if(currentNum.replace(".","").replace(new RegExp(/(,)/g),'').length >= 9){
+//			return;
+//		}else if(currentNum == "0" && keyCode != "18"){
+//			currentNum = keyValue;
+//		}else if(currentNum.indexOf(".")  > -1 && keyCode == "18"){
+//			return;
+//		}else{
+//			currentNum += keyValue;
+//		}
+//		showCurrentNum();
+//	});
+//	
+//	$(".calculator > .row").on("click", ".func", function(){
+//		if(!Number(currentNum)){
+//			currentNum = "0";
+//		}
+//		var keyCode = $(this).find("span").attr("keyCode");
+//		if(keyCode == "1"){
+//			currentNum = "0";
+//			$(".calcula.select").removeClass("select");
+//			$(".calcula.bottom-select").removeClass("bottom-select");
+//		}else if(keyCode == "2"){
+//			currentNum = (Number(currentNum)*(-1)).toString();
+//		}else if(keyCode == "3"){
+//			currentNum = (Number(currentNum)/100).toString();
+//		}
+//		showCurrentNum();
+//	});
+//	
+//	$(".calculator > .row").on("click", ".result", function(){
+//		if(!Number(currentNum)){
+//			currentNum = "0";
+//		}
+//		var selectKeyCode = $(".calcula.select").find("span").attr("keyCode"),
+//			integerLastNum = Number(lastNum),
+//			integerCurrentNum = Number(currentNum),
+//			resultNum = "";
+//		if(!selectKeyCode){
+//			return;
+//		}else if(selectKeyCode == "16"){
+//			resultNum = (integerLastNum + integerCurrentNum).toString();
+//		}else if(selectKeyCode == "12"){
+//			resultNum = (integerLastNum - integerCurrentNum).toString();
+//		}else if(selectKeyCode == "8"){
+//			resultNum = (integerLastNum * integerCurrentNum).toString();
+//		}else if(selectKeyCode == "4"){
+//			resultNum = (integerLastNum / integerCurrentNum).toString();
+//		}
+//		$(".calcula.select").removeClass("select");
+//		$(".calcula.bottom-select").removeClass("bottom-select");
+//		currentNum = resultNum;
+//		showCurrentNum();
+//	});
 }
 
 function showCurrentNum(){
