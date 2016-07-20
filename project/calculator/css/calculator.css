@@ -139,11 +139,20 @@ body {
 	font-size: 50px;
 }
 
-.num:active,.func:active{
+.num:active,
+.func:active{
 	background: none repeat scroll 0 0 #B3B3B3;
 }
 
-.oper:active,.oper:active{
+.nf-touch{
+	background: none repeat scroll 0 0 #B3B3B3;
+}
+
+.oper:active{
+	background: none repeat scroll 0 0 #FAA212;
+}
+
+.op-touch{
 	background: none repeat scroll 0 0 #FAA212;
 }
 

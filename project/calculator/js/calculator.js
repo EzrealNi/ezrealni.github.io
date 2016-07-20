@@ -101,8 +101,12 @@ function blindEvent(){
 	var calcula = $(".calculator > .row > .calcula");
 	calcula.on({
 		touchstart: function (e) {
+			$(this).addClass("op-touch");
 			e = e || event;
 			calculaClick(e,this);
+		},
+		touchend: function (e) {
+			$(this).removeClass("op-touch");
 		},
 		click: function (e) {
 			e = e || event;
@@ -113,8 +117,12 @@ function blindEvent(){
 	var num = $(".calculator > .row > .num");
 	num.on({
 		touchstart: function (e) {
+			$(this).addClass("nf-touch");
 			e = e || event;
 			numClick(e,this);
+		},
+		touchend: function (e) {
+			$(this).removeClass("nf-touch");
 		},
 		click: function (e) {
 			e = e || event;
@@ -125,8 +133,12 @@ function blindEvent(){
 	var func = $(".calculator > .row > .func");
 	func.on({
 		touchstart: function (e) {
+			$(this).addClass("nf-touch");
 			e = e || event;
 			funcClick(e,this);
+		},
+		touchend: function (e) {
+			$(this).removeClass("nf-touch");
 		},
 		click: function (e) {
 			e = e || event;
@@ -137,8 +149,12 @@ function blindEvent(){
 	var result = $(".calculator > .row > .result");
 	result.on({
 		touchstart: function (e) {
+			$(this).addClass("op-touch");
 			e = e || event;
 			resultClick(e,this);
+		},
+		touchend: function (e) {
+			$(this).removeClass("op-touch");
 		},
 		click: function (e) {
 			e = e || event;
