@@ -116,6 +116,7 @@ function blindEvent(){
 }
 
 function calculaClick(){
+	event = event || e || "";
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
@@ -128,6 +129,7 @@ function calculaClick(){
 }
 
 function numClick(){
+	event = event || e || "";
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
@@ -149,6 +151,7 @@ function numClick(){
 }
 
 function funcClick(){
+	event = event || e || "";
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
@@ -169,6 +172,7 @@ function funcClick(){
 }
 
 function resultClick(){
+	event = event || e || "";
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
