@@ -26,7 +26,7 @@ function blindEvent(){
 	});
 	
 	$(".calculator > .row").on("click", ".num", function(){
-		if(!Number(currentNum)){
+		if(!isFinite(currentNum)){
 			currentNum = "0";
 		}
 		var keyCode = $(this).find("span").attr("keyCode"),
@@ -77,11 +77,7 @@ function blindEvent(){
 		}else if(selectKeyCode == "8"){
 			resultNum = (integerLastNum * integerCurrentNum).toString();
 		}else if(selectKeyCode == "4"){
-			if(integerCurrentNum == 0){
-				resultNum = "错误";
-			}else{
-				resultNum = (integerLastNum / integerCurrentNum).toString();
-			}
+			resultNum = (integerLastNum / integerCurrentNum).toString();
 		}
 		$(".calcula.select").removeClass("select");
 		$(".calcula.bottom-select").removeClass("bottom-select");
@@ -91,14 +87,23 @@ function blindEvent(){
 }
 
 function showCurrentNum(){
-	var formatCurrentNum = currentNum,
+	if(!isFinite(currentNum)){
+		$(".screen span").html("错误");
+		currentNum = "0";
+		return;
+	}
+	var formatCurrentNum = Number(currentNum) >= 0 ? currentNum : ((Number(currentNum))*-1).toString(),
 		showCurrentNum = "";
 	if(formatCurrentNum.split("e")[0].replace(".","").replace(new RegExp(/(,)/g),'').length > 9){
 		formatCurrentNum = (Number(formatCurrentNum)).toPrecision(8).indexOf("e")  > -1 ? (Number(formatCurrentNum)).toPrecision(6) : (Number(formatCurrentNum)).toPrecision(8);
-		formatCurrentNum = Number(formatCurrentNum).toString();
+		if(formatCurrentNum.indexOf("e") > -1){
+			formatCurrentNum = Number(formatCurrentNum.split("e")[0]).toString() + "e" + formatCurrentNum.split("e")[1];
+		}else{
+			formatCurrentNum = Number(formatCurrentNum).toString();
+		}
 		if(formatCurrentNum > -1 && formatCurrentNum < 1 && formatCurrentNum.indexOf("e") === -1){
 			formatCurrentNum = Number(Number(formatCurrentNum).toFixed(8)).toString();
-		}
+		}	
 	}
 	
 	if(formatCurrentNum.indexOf("e") === -1){
@@ -119,7 +124,11 @@ function showCurrentNum(){
 		showCurrentNum = formatCurrentNum;
 	}
 	
-	var fontClass = "font-big font-length-8 font-length-9 font-length-10 font-length-11 font-length-12";
+	if(Number(currentNum) < 0){
+		showCurrentNum = "-"+showCurrentNum;
+	}
+	
+	var fontClass = "font-big font-length-8 font-length-9 font-length-10 font-length-11 font-length-12 font-length-13";
 	if(showCurrentNum.length <= 7){
 		$(".screen span").removeClass(fontClass).addClass("font-big");
 	}else{
