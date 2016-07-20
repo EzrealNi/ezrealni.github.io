@@ -99,44 +99,74 @@ function blindEvent(){
 //	});
 	
 	var calcula = $(".calculator > .row > .calcula");
-	calcula.on("touchstart",calculaClick);
-	calcula.on("click",calculaClick);
+	calcula.on({
+		touchstart: function (e) {
+			e = e || event;
+			calculaClick(e,this);
+		},
+		click: function (e) {
+			e = e || event;
+			calculaClick(e,this);
+		}
+	});
 	
 	var num = $(".calculator > .row > .num");
-	num.on("touchstart",numClick);
-	num.on("click",numClick);
+	num.on({
+		touchstart: function (e) {
+			e = e || event;
+			numClick(e,this);
+		},
+		click: function (e) {
+			e = e || event;
+			numClick(e,this);
+		}
+	});
 	
 	var func = $(".calculator > .row > .func");
-	func.on("touchstart",funcClick);
-	func.on("click",funcClick);
+	func.on({
+		touchstart: function (e) {
+			e = e || event;
+			funcClick(e,this);
+		},
+		click: function (e) {
+			e = e || event;
+			funcClick(e,this);
+		}
+	});
 	
 	var result = $(".calculator > .row > .result");
-	result.on("touchstart",resultClick);
-	result.on("click",resultClick);
+	result.on({
+		touchstart: function (e) {
+			e = e || event;
+			resultClick(e,this);
+		},
+		click: function (e) {
+			e = e || event;
+			resultClick(e,this);
+		}
+	});
 }
 
-function calculaClick(){
-	event = event || e || "";
+function calculaClick(event,thisObj){
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
 	$(".calcula.select").removeClass("select");
 	$(".calcula.bottom-select").removeClass("bottom-select");
-	$(this).addClass("select");
-	$(this).parent().prev().children(".calcula").addClass("bottom-select");
+	$(thisObj).addClass("select");
+	$(thisObj).parent().prev().children(".calcula").addClass("bottom-select");
 	lastNum = currentNum;
 	currentNum = "0";
 }
 
-function numClick(){
-	event = event || e || "";
+function numClick(event,thisObj){
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
 	if(!isFinite(currentNum)){
 		currentNum = "0";
 	}
-	var keyCode = $(this).find("span").attr("keyCode"),
+	var keyCode = $(thisObj).find("span").attr("keyCode"),
 		keyValue = keyValueObj[keyCode];
 	if(currentNum.replace(".","").replace(new RegExp(/(,)/g),'').length >= 9){
 		return;
@@ -150,15 +180,14 @@ function numClick(){
 	showCurrentNum();
 }
 
-function funcClick(){
-	event = event || e || "";
+function funcClick(event,thisObj){
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
 	if(!Number(currentNum)){
 		currentNum = "0";
 	}
-	var keyCode = $(this).find("span").attr("keyCode");
+	var keyCode = $(thisObj).find("span").attr("keyCode");
 	if(keyCode == "1"){
 		currentNum = "0";
 		$(".calcula.select").removeClass("select");
@@ -171,8 +200,7 @@ function funcClick(){
 	showCurrentNum();
 }
 
-function resultClick(){
-	event = event || e || "";
+function resultClick(event,thisObj){
 	if(event.type === "touchstart"){
 		event.preventDefault();
 	}
