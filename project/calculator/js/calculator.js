@@ -16,90 +16,29 @@ function setKeyWidth() {
 }
 
 function blindEvent(){
-	$(".calculator > .row > .calcula").click( function(){
-		$(".calcula.select").removeClass("select");
-		$(".calcula.bottom-select").removeClass("bottom-select");
-		$(this).addClass("select");
-		$(this).parent().prev().children(".calcula").addClass("bottom-select");
-		lastNum = currentNum;
-		currentNum = "0";
-	} );
 	
-	$(".calculator > .row > .num").click( function(){
-		if(!isFinite(currentNum)){
-			currentNum = "0";
-		}
-		var keyCode = $(this).find("span").attr("keyCode"),
-			keyValue = keyValueObj[keyCode];
-		if(currentNum.replace(".","").replace(new RegExp(/(,)/g),'').length >= 9){
-			return;
-		}else if(currentNum == "0" && keyCode != "18"){
-			currentNum = keyValue;
-		}else if(currentNum.indexOf(".")  > -1 && keyCode == "18"){
-			return;
-		}else{
-			currentNum += keyValue;
-		}
-		showCurrentNum();
-	});
-	
-	$(".calculator > .row > .func").click( function(){
-		if(!Number(currentNum)){
-			currentNum = "0";
-		}
-		var keyCode = $(this).find("span").attr("keyCode");
-		if(keyCode == "1"){
-			currentNum = "0";
-			$(".calcula.select").removeClass("select");
-			$(".calcula.bottom-select").removeClass("bottom-select");
-		}else if(keyCode == "2"){
-			currentNum = (Number(currentNum)*(-1)).toString();
-		}else if(keyCode == "3"){
-			currentNum = (Number(currentNum)/100).toString();
-		}
-		showCurrentNum();
-	});
-	
-	$(".calculator > .row > .result").click( function(){
-		if(!Number(currentNum)){
-			currentNum = "0";
-		}
-		var selectKeyCode = $(".calcula.select").find("span").attr("keyCode"),
-			integerLastNum = Number(lastNum),
-			integerCurrentNum = Number(currentNum),
-			resultNum = "";
-		if(!selectKeyCode){
-			return;
-		}else if(selectKeyCode == "16"){
-			resultNum = (integerLastNum + integerCurrentNum).toString();
-		}else if(selectKeyCode == "12"){
-			resultNum = (integerLastNum - integerCurrentNum).toString();
-		}else if(selectKeyCode == "8"){
-			resultNum = (integerLastNum * integerCurrentNum).toString();
-		}else if(selectKeyCode == "4"){
-			resultNum = (integerLastNum / integerCurrentNum).toString();
-		}
-		$(".calcula.select").removeClass("select");
-		$(".calcula.bottom-select").removeClass("bottom-select");
-		currentNum = resultNum;
-		showCurrentNum();
-	});
-	
-	
-	
-
-	
-	
-//	$(".calculator > .row").on("click", ".calcula", function(){
+//	var clacula = document.querySelector(".calculator > .row > .screen");
+//	clacula.addEventListener("touchstart", function(e){
+//	       e.preventDefault();
+//	       clacula.style.background = "red";
+//	       console.log("touchstart");
+//	});
+//	
+//	clacula.addEventListener("click", function(e){
+//		clacula.style.background = "blue";
+//	       console.log("click");
+//	});
+//	
+//	$(".calculator > .row > .calcula").click( function(){
 //		$(".calcula.select").removeClass("select");
 //		$(".calcula.bottom-select").removeClass("bottom-select");
 //		$(this).addClass("select");
 //		$(this).parent().prev().children(".calcula").addClass("bottom-select");
 //		lastNum = currentNum;
 //		currentNum = "0";
-//	});
+//	} );
 //	
-//	$(".calculator > .row").on("click", ".num", function(){
+//	$(".calculator > .row > .num").click( function(){
 //		if(!isFinite(currentNum)){
 //			currentNum = "0";
 //		}
@@ -117,7 +56,7 @@ function blindEvent(){
 //		showCurrentNum();
 //	});
 //	
-//	$(".calculator > .row").on("click", ".func", function(){
+//	$(".calculator > .row > .func").click( function(){
 //		if(!Number(currentNum)){
 //			currentNum = "0";
 //		}
@@ -134,7 +73,7 @@ function blindEvent(){
 //		showCurrentNum();
 //	});
 //	
-//	$(".calculator > .row").on("click", ".result", function(){
+//	$(".calculator > .row > .result").click( function(){
 //		if(!Number(currentNum)){
 //			currentNum = "0";
 //		}
@@ -158,6 +97,103 @@ function blindEvent(){
 //		currentNum = resultNum;
 //		showCurrentNum();
 //	});
+	
+	var calcula = $(".calculator > .row > .calcula");
+	calcula.on("touchstart",calculaClick);
+	calcula.on("click",calculaClick);
+	
+	var num = $(".calculator > .row > .num");
+	num.on("touchstart",numClick);
+	num.on("click",numClick);
+	
+	var func = $(".calculator > .row > .func");
+	func.on("touchstart",funcClick);
+	func.on("click",funcClick);
+	
+	var result = $(".calculator > .row > .result");
+	result.on("touchstart",resultClick);
+	result.on("click",resultClick);
+}
+
+function calculaClick(){
+	if(event.type === "touchstart"){
+		event.preventDefault();
+	}
+	$(".calcula.select").removeClass("select");
+	$(".calcula.bottom-select").removeClass("bottom-select");
+	$(this).addClass("select");
+	$(this).parent().prev().children(".calcula").addClass("bottom-select");
+	lastNum = currentNum;
+	currentNum = "0";
+}
+
+function numClick(){
+	if(event.type === "touchstart"){
+		event.preventDefault();
+	}
+	if(!isFinite(currentNum)){
+		currentNum = "0";
+	}
+	var keyCode = $(this).find("span").attr("keyCode"),
+		keyValue = keyValueObj[keyCode];
+	if(currentNum.replace(".","").replace(new RegExp(/(,)/g),'').length >= 9){
+		return;
+	}else if(currentNum == "0" && keyCode != "18"){
+		currentNum = keyValue;
+	}else if(currentNum.indexOf(".")  > -1 && keyCode == "18"){
+		return;
+	}else{
+		currentNum += keyValue;
+	}
+	showCurrentNum();
+}
+
+function funcClick(){
+	if(event.type === "touchstart"){
+		event.preventDefault();
+	}
+	if(!Number(currentNum)){
+		currentNum = "0";
+	}
+	var keyCode = $(this).find("span").attr("keyCode");
+	if(keyCode == "1"){
+		currentNum = "0";
+		$(".calcula.select").removeClass("select");
+		$(".calcula.bottom-select").removeClass("bottom-select");
+	}else if(keyCode == "2"){
+		currentNum = (Number(currentNum)*(-1)).toString();
+	}else if(keyCode == "3"){
+		currentNum = (Number(currentNum)/100).toString();
+	}
+	showCurrentNum();
+}
+
+function resultClick(){
+	if(event.type === "touchstart"){
+		event.preventDefault();
+	}
+	if(!Number(currentNum)){
+		currentNum = "0";
+	}
+	var selectKeyCode = $(".calcula.select").find("span").attr("keyCode"),
+		integerLastNum = Number(lastNum),
+		integerCurrentNum = Number(currentNum),
+		resultNum = "";
+	if(!selectKeyCode){
+		return;
+	}else if(selectKeyCode == "16"){
+		resultNum = (integerLastNum + integerCurrentNum).toString();
+	}else if(selectKeyCode == "12"){
+		resultNum = (integerLastNum - integerCurrentNum).toString();
+	}else if(selectKeyCode == "8"){
+		resultNum = (integerLastNum * integerCurrentNum).toString();
+	}else if(selectKeyCode == "4"){
+		resultNum = (integerLastNum / integerCurrentNum).toString();
+	}
+	$(".calcula.select").removeClass("select");
+	$(".calcula.bottom-select").removeClass("bottom-select");
+	currentNum = resultNum;
+	showCurrentNum();
 }
 
 function showCurrentNum(){
