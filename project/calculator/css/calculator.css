@@ -26,12 +26,17 @@
     src: local("☺︎"), url("../font/myriad-set-pro_thin.woff") format("woff");
 }
 
+html{
+	height: 100%;
+}
+
 body {
 	background: none repeat scroll 0 0 #202020;
 	padding: 0px;
 	margin: 0px;
 	overflow: hidden;
 	-moz-user-select: none;
+	height: 100%;
 }
 
 .calculator {
