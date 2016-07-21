@@ -1,22 +1,14 @@
 @font-face {
+    font-family: "Helvetica-Neue-LT-Std";
+/*     src: url("http://youzikuwebfont.oss-cn-beijing.aliyuncs.com/webfonts/css/youziku/46882/46882.gif?#iefix") format("embedded-opentype"), url("http://youzikuwebfont.oss-cn-beijing.aliyuncs.com/webfonts/css/youziku/46882/46882.bmp") format("woff"), url("") format("truetype"), url("http://youzikuwebfont.oss-cn-beijing.aliyuncs.com/webfonts/css/youziku/46882/46882.png#Helvetica-Neue-LT-Std") format("svg"); */
+	src: local("☺︎"), url("../font/Helvetica-Neue-LT-Std.woff") format("woff");
+}
+
+@font-face {
     font-family: "PingHei";
     font-style: normal;
     font-weight: 200;
     src: local("☺︎"), url("../font/PingHei-light.woff") format("woff");
-}
-
-@font-face {
-    font-family: "myriad-bold";
-    font-style: normal;
-    font-weight: 200;
-    src: local("☺︎"), url("../font/myriad-set-pro_bold.woff") format("woff");
-}
-
-@font-face {
-    font-family: "myriad-text";
-    font-style: normal;
-    font-weight: 200;
-    src: local("☺︎"), url("../font/myriad-set-pro_text.woff") format("woff");
 }
 
 @font-face {
@@ -92,13 +84,14 @@ body {
 .screen span.bottom {
 	bottom: 0px;
 	right: 15px;
+	font-family: Helvetica-Neue-LT-Std;
 	font-size: 96px;
     font-weight: 100;
     letter-spacing: -6px;
 }
 
 .font-big{
-	font-size: 30vw!important;
+	font-size: 29vw!important;
 }
 
 .font-length-8{
@@ -106,15 +99,15 @@ body {
 }
 
 .font-length-9{
-	font-size: 24vw!important;
+	font-size: 23vw!important;
 }
 
 .font-length-10{
-	font-size: 22vw!important;
+	font-size: 21vw!important;
 }
 
 .font-length-11{
-	font-size: 20vw!important;
+	font-size: 19vw!important;
 }
 
 .font-length-12{
