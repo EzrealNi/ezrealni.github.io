@@ -90,6 +90,7 @@ body {
 	font-size: 96px;
     font-weight: 100;
     letter-spacing: -6px;
+    white-space: nowrap;
 }
 
 .font-big{

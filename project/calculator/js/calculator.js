@@ -170,15 +170,16 @@ function showCurrentNum(){
 	}
 	var formatCurrentNum = Number(currentNum) >= 0 ? currentNum : ((Number(currentNum))*-1).toString(),
 		showCurrentNum = "";
-	if(formatCurrentNum.split("e")[0].replace(".","").replace(new RegExp(/(,)/g),'').length > 9){
-		formatCurrentNum = (Number(formatCurrentNum)).toPrecision(8).indexOf("e")  > -1 ? (Number(formatCurrentNum)).toPrecision(6) : (Number(formatCurrentNum)).toPrecision(8);
+	if((formatCurrentNum.indexOf("e") > -1 && formatCurrentNum.split("e")[0].replace(".","").replace(new RegExp(/(,)/g),'').length > 6)||(formatCurrentNum.indexOf("e") === -1 && formatCurrentNum.split("e")[0].replace(".","").replace(new RegExp(/(,)/g),'').length > 9)){
+//		formatCurrentNum = (Number(formatCurrentNum)).toPrecision(8).indexOf("e")  > -1 ? (Number(formatCurrentNum)).toPrecision(6) : (Number(formatCurrentNum)).toPrecision(8);
+		formatCurrentNum = (Number(formatCurrentNum)).toPrecision(6);
 		if(formatCurrentNum.indexOf("e") > -1){
 			formatCurrentNum = Number(formatCurrentNum.split("e")[0]).toString() + "e" + formatCurrentNum.split("e")[1];
 		}else{
 			formatCurrentNum = Number(formatCurrentNum).toString();
 		}
 		if(formatCurrentNum > -1 && formatCurrentNum < 1 && formatCurrentNum.indexOf("e") === -1){
-			formatCurrentNum = Number(Number(formatCurrentNum).toFixed(8)).toString();
+			formatCurrentNum = Number(Number(formatCurrentNum).toFixed(6)).toString();
 		}	
 	}
 	
