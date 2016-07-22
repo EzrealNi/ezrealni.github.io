@@ -63,6 +63,8 @@ body {
 	height: 100%;
 	text-align: center;
 	padding: 0;
+	font-family: "Segoe UI";
+    font-weight: 100;
 }
 
 .zero {
@@ -84,7 +86,7 @@ body {
 .screen span.bottom {
 	bottom: 0px;
 	right: 15px;
-	font-family: Helvetica-Neue-LT-Std;
+	font-family: Helvetica-Neue-LT-Std,"Segoe UI";
 	font-size: 96px;
     font-weight: 100;
     letter-spacing: -6px;
