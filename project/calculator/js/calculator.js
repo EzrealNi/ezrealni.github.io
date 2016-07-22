@@ -204,7 +204,7 @@ function showCurrentNum(){
 		showCurrentNum = "-"+showCurrentNum;
 	}
 	
-	var fontClass = "font-big font-length-8 font-length-9 font-length-10 font-length-11 font-length-12 font-length-13";
+	var fontClass = "font-big font-length-8 font-length-9 font-length-10 font-length-11 font-length-12 font-length-13 font-length-14 font-length-15";
 	if(showCurrentNum.length <= 7){
 		$(".screen span").removeClass(fontClass).addClass("font-big");
 	}else{

@@ -84,7 +84,7 @@ body {
 }
 
 .screen span.bottom {
-	bottom: 0px;
+/* 	bottom: 0px; */
 	right: 15px;
 	font-family: Helvetica-Neue-LT-Std,"Segoe UI";
 	font-size: 96px;
@@ -94,30 +94,47 @@ body {
 
 .font-big{
 	font-size: 29vw!important;
+	bottom: -25px;
 }
 
 .font-length-8{
 	font-size: 26vw!important;
+	bottom: -18px;
 }
 
 .font-length-9{
 	font-size: 23vw!important;
+	bottom: -11px;
 }
 
 .font-length-10{
 	font-size: 21vw!important;
+	bottom: -6px;
 }
 
 .font-length-11{
 	font-size: 19vw!important;
+	bottom: -1px;
 }
 
 .font-length-12{
 	font-size: 18vw!important;
+	bottom: 1px;
 }
 
 .font-length-13{
 	font-size: 17vw!important;
+	bottom: 3px;
+}
+
+.font-length-14{
+	font-size: 16vw!important;
+	bottom: 5px;
+}
+
+.font-length-15{
+	font-size: 15vw!important;
+	bottom: 7px;
 }
 
 .func {
