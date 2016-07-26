@@ -8,11 +8,14 @@ $(function() {
 });
 
 function setKeyWidth() {
-	var calculatorWidth = $(".calculator").width(),
+	var screenHeight = $(window).height(),
+		calculatorWidth = $(".calculator").width(),
 		keyWidth = (calculatorWidth - 5) / 4, zeroWidth = keyWidth * 2 + 1;
 	$(".key:not(.screen,.zero)").width(keyWidth);
 	$(".key.zero").width(zeroWidth);
 	$(".key:not(.screen)").css("line-height", $(".key.zero").height() + "px");
+	
+	$(".loading").css("line-height", screenHeight/3 + "px");
 }
 
 function blindEvent(){
