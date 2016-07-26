@@ -181,3 +181,8 @@ body {
 .bottom-select{
 	border-bottom-color: #202020;
 }
+
+.demo-pic{
+	display: none;
+	width: 400px;
+}
