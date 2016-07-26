@@ -183,6 +183,9 @@ body {
 }
 
 .demo-pic{
-	display: none;
+/* 	display: none; */
 	width: 400px;
+	position: absolute;
+    top: 0;
+    left: 0;
 }
