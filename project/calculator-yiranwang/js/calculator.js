@@ -5,17 +5,30 @@ var lastNum = "0",
 $(function() {
 	setKeyWidth();
 	blindEvent();
+	initCanvas();
 });
+
+function initCanvas(){
+	setTimeout(
+		$(".loading").hide( 5000, function(){
+			$("body").css("background-color","#000000")
+			$(".calculator").show();
+	    })
+	,5000)
+}
 
 function setKeyWidth() {
 	var screenHeight = $(window).height(),
+		screenWidth = $(window).width(),
 		calculatorWidth = $(".calculator").width(),
 		keyWidth = (calculatorWidth - 5) / 4, zeroWidth = keyWidth * 2 + 1;
 	$(".key:not(.screen,.zero)").width(keyWidth);
 	$(".key.zero").width(zeroWidth);
 	$(".key:not(.screen)").css("line-height", $(".key.zero").height() + "px");
 	
-	$(".loading").css("line-height", screenHeight/3 + "px");
+//	$(".loading").css("line-height", screenHeight/3 + "px");
+	$(".show-pic").css("width",screenWidth-parseInt($(".showpic-p").css("padding-left"))-parseInt($(".showpic-p").css("padding-right")));
+	$(".showmessage-p").css("top",screenWidth);
 }
 
 function blindEvent(){
