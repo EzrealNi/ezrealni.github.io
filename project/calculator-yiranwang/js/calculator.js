@@ -4,7 +4,7 @@ var lastNum = "0",
 	typeWriterMessage = ["Support by:","Yiran Wang."],
 	titleMessage = typeWriterMessage[0].split(""),
 	nameMessage = typeWriterMessage[1].split(""),
-	colorList = ["#8bcbf7","#459968","#efc4cb","#e7cfa6","#c92b2b","#000000"];
+	colorList = ["#8bcbf7","#459968","#efc4cb","#e7cfa6","#c92b2b","#ffffff","#000000"];
 
 $(function() {
 	setKeyWidth();
@@ -57,7 +57,7 @@ function changeColor(){
 		setTimeout(function(){
 			$("body").css("background-color",colorList.shift());
 			changeColor();
-		}, 1000);
+		}, 800);
 	}else{
 		$(".showmessage-p").css("color","#FFFFFF");
 		canvas();
