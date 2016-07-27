@@ -1,6 +1,7 @@
 var lastNum = "0",
 	currentNum = "0",
-	keyValueObj = {"1": "C","2": "+/-","3": "%","4": "÷","5": "7","6": "8","7": "9","8": "×","9": "4","10": "5","11": "6","12": "-","13": "1","14": "2","15": "3","16": "+","17": "0","18": ".","19": "="};
+	keyValueObj = {"1": "C","2": "+/-","3": "%","4": "÷","5": "7","6": "8","7": "9","8": "×","9": "4","10": "5","11": "6","12": "-","13": "1","14": "2","15": "3","16": "+","17": "0","18": ".","19": "="},
+	typewriter = ["Support by:","Yiran Wang."];
 
 $(function() {
 	setKeyWidth();
@@ -8,13 +9,19 @@ $(function() {
 	initCanvas();
 });
 
+function typewriter(){
+	
+}
+
 function initCanvas(){
-	setTimeout(
-		$(".loading").hide( 5000, function(){
-			$("body").css("background-color","#000000")
-			$(".calculator").show();
-	    })
-	,5000)
+	setTimeout("canvas()",5000);
+}
+
+function canvas(){
+	$(".loading").hide( 5000, function(){
+		$("body").css("background-color","#000000")
+		$(".calculator").show();
+    });
 }
 
 function setKeyWidth() {
