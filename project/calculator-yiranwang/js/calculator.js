@@ -1,26 +1,72 @@
 var lastNum = "0",
 	currentNum = "0",
 	keyValueObj = {"1": "C","2": "+/-","3": "%","4": "÷","5": "7","6": "8","7": "9","8": "×","9": "4","10": "5","11": "6","12": "-","13": "1","14": "2","15": "3","16": "+","17": "0","18": ".","19": "="},
-	typewriter = ["Support by:","Yiran Wang."];
+	typeWriterMessage = ["Support by:","Yiran Wang."],
+	titleMessage = typeWriterMessage[0].split(""),
+	nameMessage = typeWriterMessage[1].split(""),
+	colorList = ["#8bcbf7","#459968","#efc4cb","#e7cfa6","#c92b2b","#000000"];
 
 $(function() {
 	setKeyWidth();
 	blindEvent();
-	initCanvas();
+	typewriter();
 });
 
 function typewriter(){
-	
+	if(titleMessage.length > 0){
+		setTimeout(function(){
+			$(".message-title").append(titleMessage.shift());
+			typewriter();
+		}, 150);
+	}else if(nameMessage.length > 0){
+		setTimeout(function(){
+			$(".message-name").append(nameMessage.shift());
+			typewriter();
+		}, 200);
+	}else{
+		$(".showpic-p").show(3000,
+			initCanvas
+		);
+	}
 }
 
 function initCanvas(){
-	setTimeout("canvas()",5000);
+	$(".loading-progress").show();
+	changeProgress();
+//	setTimeout("changeColor()",5000);
+}
+
+var loadNum = 0;
+function changeProgress(){
+	setTimeout(function(){
+		$(".loading-progress .bar").css("width",(loadNum/10)*100 + "%");
+		loadNum ++;
+		if(loadNum < 11){
+			changeProgress();
+		}else{
+			setTimeout(function(){
+				$(".loading-progress").hide();
+				changeColor();
+			}, 1000);
+		}
+	}, 250);
+}
+
+function changeColor(){
+	if(colorList.length > 0){
+		setTimeout(function(){
+			$("body").css("background-color",colorList.shift());
+			changeColor();
+		}, 1000);
+	}else{
+		$(".showmessage-p").css("color","#FFFFFF");
+		canvas();
+	}
 }
 
 function canvas(){
-	$(".loading").hide( 5000, function(){
-		$("body").css("background-color","#000000")
-		$(".calculator").show();
+	$(".loading").slideUp( 2000, function(){
+		$(".calculator").slideDown(2000);
     });
 }
 
