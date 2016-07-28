@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<head>
+    <script src="../css3d.js"></script>
+    <style>
+        #main{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="main">
+
+</div>
+    <script>
+        //创建场景
+        var s = new C3D.Stage();
+        s.size(window.innerWidth, window.innerHeight).material({
+            color : "#cccccc"
+        }).update();
+        document.getElementById('main').appendChild(s.el);
+
+        //创建1个立方体放入场景
+        var c = new C3D.Skybox();
+        c.size(1600).position(0, 0, 0).material({
+            front : "testimg/color-front.jpg",
+            back : "testimg/color-back.jpg",
+            left : "testimg/color-left.jpg",
+            right : "testimg/color-right.jpg",
+            up : "testimg/color-up.jpg",
+            down : "testimg/color-down.jpg"
+        }).update();
+        s.addChild(c);
+
+        //响应屏幕调整尺寸
+        function resize() {
+            s.size(window.innerWidth, window.innerHeight).update();
+        };
+        window.onresize = function() {
+            resize();
+        };
+        resize();
+
+        //刷新场景
+        requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame ||
+        function(callback) {
+            setTimeout(callback, 1000 / 60);
+        };
+
+        function go() {
+//            c.rotate(0, 0.1, 0).updateT();
+
+            s.camera.rotate(0,0.3,0).updateT();
+
+            requestAnimationFrame(go);
+        }
+
+        requestAnimationFrame(go);
+
+    </script>
+</body>
