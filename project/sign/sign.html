@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+	<title>Sign</title>
+	
+	<link href="css/sign.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="top">
+		<img class="return" src="img/zuo.png">
+		<img class="topic" src="img/top.png">
+	</div>
+	<div class="content">
+		<div class="title">
+			<img src="img/logo.png">
+			<span class="hide">本周签到礼包</span>
+		</div>
+		
+		<div class="toolbar">
+		</div>
+		
+		<div class="game">
+			<div class="game_top">
+			</div>
+			<div class="game_row">
+				<div class="sign_day_1">
+					<div class="gold">
+						<img src="img/jbo.png">
+					</div>
+				</div>
+				<div class="sign_day_2">
+					<div class="gold">
+						<img src="img/jboo.png">
+					</div>
+				</div>
+				<div class="sign_day_3">
+					<div class="gold">
+						<img src="img/jboo.png">
+					</div>
+				</div>
+				<div class="sign_day_4">
+					<div class="gold">
+						<img src="img/jboo.png">
+					</div>
+				</div>
+			</div>
+			<div class="game_row">
+				<div class="sign_day_5">
+					<div class="gold">
+						<img src="img/jboo.png">
+					</div>
+				</div>
+				<div class="sign_day_6">
+					<div class="gold">
+						<img src="img/jboo.png">
+					</div>
+				</div>
+				<div class="sign_day_7">
+					<div class="gold">
+						<img src="img/jboo.png">
+					</div>
+				</div>
+			</div>
+			<div class="game_sign">
+				<img id="click" src="img/btn.png">
+			</div>
+			<div class="game_footer">
+			</div>
+		</div>
+		
+		<div class="toolbar">
+		</div>
+	</div>
+	<div class="footer">
+		<img src="img/sm.png">
+	</div>
+	
+	<script src="jquery.js"></script>
+	
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			initStyle();
+			bindEvent();
+		});
+		
+		$(window).resize(function() {
+			initStyle();
+		});
+		
+		function initStyle(){
+			$(".content .title").css("height",$(".content").height()*0.2 - (parseInt($(".content .title").css("padding-top"))*2));
+			$(".content .title span").css("line-height",$(".content .title").height() + "px").removeClass("hide");
+			$(".top img.return").css("top",($(".top").height() - $(".top img.return").height())/2 )
+		}
+		
+		function bindEvent(){
+			$('#click').click(function(){
+				$('.sign_day_1 img').attr('src',' img/ylq.png');
+			});
+			
+			$(".top img.return").click(function(){
+				location.href = "sign.html";
+			});
+		}
+	</script>
+</body>
+</html>

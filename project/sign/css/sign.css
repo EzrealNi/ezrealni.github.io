@@ -1,0 +1,138 @@
+html,body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.top{
+	height: 8%;
+	position: relative;
+}
+
+.top img.return{
+	height: 35%;
+    position: absolute;
+    top: 20%;
+    left: 8%;
+}
+
+.top img.topic{
+	height: 100%;
+	width: 100%;
+}
+
+.content{
+	height: 73%;
+	background: #ffffff;
+}
+
+.title{
+	height: 15%;
+	padding: 10px 0 10px 10px;
+}
+
+.title img{
+	display: inline-block;
+	float: left;
+	height: 100%;
+	width: auto;
+}
+
+.title span{
+	display: inline-block;
+	float: left;
+	color: #353535;
+    font-family:"΢���ź�";
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-left: 10px;
+}
+
+.game{
+	height: 72%;
+}
+
+.game_top{
+	height: 4.5%;
+}
+
+.game_row{
+	height: 38.8%;
+	font-size: 0px;
+}
+
+.sign_day_1,.sign_day_2,.sign_day_3,.sign_day_4,.sign_day_5,.sign_day_6,.sign_day_7{
+	width: 20%;
+	height: 100%;
+	display: inline-block;
+}
+
+.sign_day_1{
+	padding: 0 2% 0 4%;
+}
+
+.sign_day_2,.sign_day_3,.sign_day_6{
+	padding: 0 2% 0 2%;
+}
+
+.sign_day_4{
+	padding: 0 4% 0 2%;
+}
+
+.sign_day_5{
+	padding: 0 2% 0 16%;
+}
+
+.sign_day_7{
+	padding: 0 16% 0 2%;
+}
+
+.gold{
+	width: 100%;
+	height: 90%;
+}
+
+.gold img{
+	width: 100%;
+	height: 100%;
+}
+
+.game_sign{
+	height: 12.7%;
+	text-align: center;
+}
+
+.game_sign img{
+	width: auto;
+	height: 100%;
+}
+
+.game_footer{
+	height: 5.2%;
+}
+
+.toolbar{
+	height: 4%;
+    background-color: #F7F7F7;
+    background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+    background-repeat: repeat-x;
+    border-radius: 0px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    overflow: hidden;
+}
+
+.footer{
+	height: 19%;
+}
+
+.footer img{
+	width: 90%;
+    margin-left: 5%;
+    margin-top: 3%;
+    max-height: 90%;
+}
+
+.hide{
+	display: none!important;
+}
