@@ -1,14 +1,19 @@
-    <!DOCTYPE html>  
-    <html><head>  
-        <title>HTML5 code Reader</title>  
-        <meta http-equiv="Content-Type" content="text/html; charset=gb2312">  
-    </head>  
-    <style type="text/css">  
-     html, body { height: 100%; width: 100%; text-align:center; }    
-    </style>  
-    <script src="jquery-1.9.1.js"></script>  
-    <script>  
-    //Õâ¶Î´ú Ö÷ÒªÊÇ»ñÈ¡ÉãÏñÍ·µÄÊÓÆµÁ÷²¢ÏÔÊ¾ÔÚVideo Ç©ÖĞ    
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 code Reader</title>
+<meta charset="UTF-8" />
+</head>
+<style type="text/css">
+html,body {
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+</style>
+<script src="jquery-1.9.1.js"></script>
+<script>  
+    //è¿™æ®µä»£ ä¸»è¦æ˜¯è·å–æ‘„åƒå¤´çš„è§†é¢‘æµå¹¶æ˜¾ç¤ºåœ¨Video ç­¾ä¸­    
     var canvas=null,context=null,video=null;     
     window.addEventListener("DOMContentLoaded", function ()  
     {  
@@ -24,21 +29,21 @@
                 flag=false;    
                 if (error.PERMISSION_DENIED)  
                 {  
-                     alert('ÓÃ»§¾Ü¾øÁËä¯ÀÀÆ÷ÇëÇóÃ½ÌåµÄÈ¨ÏŞ', 'ÌáÊ¾');  
+                     alert('ç”¨æˆ·æ‹’ç»äº†æµè§ˆå™¨è¯·æ±‚åª’ä½“çš„æƒé™', 'æç¤º');  
                 } else if (error.NOT_SUPPORTED_ERROR) {  
-                     alert('¶Ô²»Æğ£¬ÄúµÄä¯ÀÀÆ÷²»Ö§³ÖÅÄÕÕ¹¦ÄÜ£¬ÇëÊ¹ÓÃÆäËûä¯ÀÀÆ÷', 'ÌáÊ¾');  
+                     alert('å¯¹ä¸èµ·ï¼Œæ‚¨çš„æµè§ˆå™¨ä¸æ”¯æŒæ‹ç…§åŠŸèƒ½ï¼Œè¯·ä½¿ç”¨å…¶ä»–æµè§ˆå™¨', 'æç¤º');  
                 } else if (error.MANDATORY_UNSATISFIED_ERROR) {  
-                     alert('Ö¸¶¨µÄÃ½ÌåÀàĞÍÎ´½ÓÊÕµ½Ã½ÌåÁ÷', 'ÌáÊ¾');  
+                     alert('æŒ‡å®šçš„åª’ä½“ç±»å‹æœªæ¥æ”¶åˆ°åª’ä½“æµ', 'æç¤º');  
                 } else {  
-                     alert('ÏµÍ³Î´ÄÜ»ñÈ¡µ½ÉãÏñÍ·£¬ÇëÈ·±£ÉãÏñÍ·ÒÑÕıÈ·°²×°¡£»ò³¢ÊÔË¢ĞÂÒ³Ãæ£¬ÖØÊÔ', 'ÌáÊ¾');  
+                     alert('ç³»ç»Ÿæœªèƒ½è·å–åˆ°æ‘„åƒå¤´ï¼Œè¯·ç¡®ä¿æ‘„åƒå¤´å·²æ­£ç¡®å®‰è£…ã€‚æˆ–å°è¯•åˆ·æ–°é¡µé¢ï¼Œé‡è¯•', 'æç¤º');  
                 }  
             };  
-            //»ñÈ¡Ã½ÌåµÄ¼æÈİ´úÂë£¬Ä¿Ç°Ö»Ö§³Ö£¨Firefox,Chrome,Opera£©  
+            //è·å–åª’ä½“çš„å…¼å®¹ä»£ç ï¼Œç›®å‰åªæ”¯æŒï¼ˆFirefox,Chrome,Operaï¼‰  
             if (navigator.getUserMedia)  
             {  
-                //qqä¯ÀÀÆ÷²»Ö§³Ö  
+                //qqæµè§ˆå™¨ä¸æ”¯æŒ  
                 if (navigator.userAgent.indexOf('MQQBrowser') > -1) {  
-                     alert('¶Ô²»Æğ£¬ÄúµÄä¯ÀÀÆ÷²»Ö§³ÖÅÄÕÕ¹¦ÄÜ£¬ÇëÊ¹ÓÃÆäËûä¯ÀÀÆ÷', 'ÌáÊ¾');  
+                     alert('å¯¹ä¸èµ·ï¼Œæ‚¨çš„æµè§ˆå™¨ä¸æ”¯æŒæ‹ç…§åŠŸèƒ½ï¼Œè¯·ä½¿ç”¨å…¶ä»–æµè§ˆå™¨', 'æç¤º');  
                      return false;  
                 }  
                 navigator.getUserMedia(videoObj, function (stream) {  
@@ -69,26 +74,26 @@
                     video.play();  
                  }, MediaErr);  
             }else{  
-                alert('¶Ô²»Æğ£¬ÄúµÄä¯ÀÀÆ÷²»Ö§³ÖÅÄÕÕ¹¦ÄÜ£¬ÇëÊ¹ÓÃÆäËûä¯ÀÀÆ÷');  
+                alert('å¯¹ä¸èµ·ï¼Œæ‚¨çš„æµè§ˆå™¨ä¸æ”¯æŒæ‹ç…§åŠŸèƒ½ï¼Œè¯·ä½¿ç”¨å…¶ä»–æµè§ˆå™¨');  
                 return false;  
             }  
             if(flag){  
-                alert('ÎªÁË»ñµÃ¸ü×¼È·µÄ²âÊÔ½á¹û£¬Çë¾¡Á¿½«¶şÎ¬ÂëÖÃÓÚ¿òÖĞ£¬È»ºó½øĞĞÅÄÉã¡¢É¨Ãè¡£ ÇëÈ·±£ä¯ÀÀÆ÷ÓĞÈ¨ÏŞÊ¹ÓÃÉãÏñ¹¦ÄÜ');  
+                alert('ä¸ºäº†è·å¾—æ›´å‡†ç¡®çš„æµ‹è¯•ç»“æœï¼Œè¯·å°½é‡å°†äºŒç»´ç ç½®äºæ¡†ä¸­ï¼Œç„¶åè¿›è¡Œæ‹æ‘„ã€æ‰«æã€‚ è¯·ç¡®ä¿æµè§ˆå™¨æœ‰æƒé™ä½¿ç”¨æ‘„åƒåŠŸèƒ½');  
             }  
-             //Õâ¸öÊÇÅÄÕÕ°´Å¥µÄÊÂ¼ş£¬            
+             //è¿™ä¸ªæ˜¯æ‹ç…§æŒ‰é’®çš„äº‹ä»¶ï¼Œ            
             $("#snap").click(function () {startPat();}).show();  
         }catch(e){        
-            printHtml("ä¯ÀÀÆ÷²»Ö§³ÖHTML5 CANVAS");         
+            printHtml("æµè§ˆå™¨ä¸æ”¯æŒHTML5 CANVAS");         
         }   
     }, false);  
           
-    //´òÓ¡ÄÚÈİµ½Ò³Ãæ        
+    //æ‰“å°å†…å®¹åˆ°é¡µé¢        
     function printHtml(content){  
         $(window.document.body).append(content+"<br/>");  
     }  
-    //¿ªÊ¼ÅÄÕÕ  
+    //å¼€å§‹æ‹ç…§  
     function startPat(){  
-        setTimeout(function(){//·ÀÖ¹µ÷ÓÃ¹ı¿ì  
+        setTimeout(function(){//é˜²æ­¢è°ƒç”¨è¿‡å¿«  
             if(context)  
             {  
                 context.drawImage(video, 0, 0, 320, 320);       
@@ -96,39 +101,42 @@
             }  
         },200);  
     }   
-    //×¥ÆÁ»ñÈ¡Í¼ÏñÁ÷£¬²¢ÉÏ´«µ½·şÎñÆ÷        
+    //æŠ“å±è·å–å›¾åƒæµï¼Œå¹¶ä¸Šä¼ åˆ°æœåŠ¡å™¨        
     function CatchCode() {          
         if(canvas!=null)  
         {    
-            //ÒÔÏÂ¿ªÊ¼±à Êı¾İ     
+            //ä»¥ä¸‹å¼€å§‹ç¼– æ•°æ®     
             var imgData = canvas.toDataURL();   
-            //½«Í¼Ïñ×ª»»Îªbase64Êı¾İ  
-            var base64Data = imgData;//.substr(22); //ÔÚÇ°¶Ë½ØÈ¡22Î»Ö®ºóµÄ×Ö·û´®×÷ÎªÍ¼ÏñÊı¾İ  
-            //¿ªÊ¼Òì²½ÉÏ  
+            //å°†å›¾åƒè½¬æ¢ä¸ºbase64æ•°æ®  
+            var base64Data = imgData;//.substr(22); //åœ¨å‰ç«¯æˆªå–22ä½ä¹‹åçš„å­—ç¬¦ä¸²ä½œä¸ºå›¾åƒæ•°æ®  
+            //å¼€å§‹å¼‚æ­¥ä¸Š  
            $.post("saveimg.php", { "img": base64Data },function (result)  
-           {     
-                printHtml("½âÎö½á¹û£º"+result.data);  
+           {
+                printHtml("è§£æç»“æœï¼š"+result.data);  
                 if (result.status == "success" && result.data!="")  
                 {                   
-                    printHtml("½âÎö½á¹û³É¹¦£¡");  
+                    printHtml("è§£æç»“æœæˆåŠŸï¼");  
                 }else{    
-                    startPat();//Èç¹ûÃ»ÓĞ½âÎö³öÀ´ÔòÖØĞÂ×¥ÅÄ½âÎö         
+                    startPat();//å¦‚æœæ²¡æœ‰è§£æå‡ºæ¥åˆ™é‡æ–°æŠ“æ‹è§£æ         
                 }  
            },"json");  
         }  
     }        
-    </script>  
-      <body>  
-      
-    <div id="support"></div>  
-    <div id="contentHolder">         
-    <video id="video" width="320" height="320" autoplay>  
-    </video>         
-    <canvas style="display:none; background-color:#F00;" id="canvas" width="320" height="320">  
-    </canvas> <br/>  
-    <button id="snap" style="display:none; height:50px; width:120px;">¿ªÊ¼É¨Ãè</button>    
-       </div>  
-      
-      
-      
-    </body></html>  
+    </script>
+<body>
+
+	<div id="support"></div>
+	<div id="contentHolder">
+		<video id="video" width="320" height="320" autoplay>
+		</video>
+		<canvas style="display: none; background-color: #F00;" id="canvas"
+			width="320" height="320">  
+    </canvas>
+		<br />
+		<button id="snap" style="display: none; height: 50px; width: 120px;">å¼€å§‹æ‰«æ</button>
+	</div>
+
+
+
+</body>
+</html>
