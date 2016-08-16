@@ -49,19 +49,6 @@ function loadImage(cssName,picName,picNum){
 	}).fail(function(error) {
 		loadImage(cssName,picName,picNum);
 	});
-//	promise.then(
-//		function(imgData){
-//			var imgStyle = countImageSize(imgData.width,imgData.height);
-//			$(cssName).prop("src",imgData.url);
-//			$(cssName).css(imgStyle).removeClass("hide");
-//		},
-//		function(error) {
-//			loadImage(cssName,picName,picNum);
-//		}, 
-//		function(notify) {
-//			console.log("img loading notify");
-//		}
-//	);
 }
 
 function getImage(picName,picNum) {
@@ -100,18 +87,21 @@ function countImageSize(imgWidth,imgHeight){
 		returnStyle = {
 				"width": 0,
 				"height": 0,
-				"margin-top": 0
+				"margin-top": 0,
+				"margin-left": 0
 		};
 		
 		if(wdWH > imgWH){
 			returnStyle["width"] =  wdWidth;
 			returnStyle["height"] =  wdWidth/imgWH;
 			returnStyle["margin-top"] = 0;
+			returnStyle["margin-left"] = 0;
 //			returnStyle["margin-top"] = ((returnStyle["height"] - wdHeight)/2)*-1;
 		}else{
 			returnStyle["height"] = wdHeight;
 			returnStyle["width"] =  wdHeight*imgWH;
 			returnStyle["margin-top"] = 0;
+			returnStyle["margin-left"] = ((returnStyle["width"] - wdWidth)/2)*-1;
 		}
 	
 	return returnStyle;
