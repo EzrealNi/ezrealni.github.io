@@ -80,7 +80,7 @@ body{
     right: 50px;
 }
 
-.href-down {
+.icon {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -90,10 +90,23 @@ body{
 	text-align: left;
 }
 
-.href-down i {
+.icon i {
 	position: absolute;
 	top: 50%;
 	cursor: pointer;
+}
+
+.audio i.volume {
+	position: fixed;
+	cursor: pointer;
+	top: 80px;
+	right: 30px;
+	z-index: 1040;
+	color: #FFFFFF;
+}
+
+.icon i.href-icon {
+	top: 50%;
 }
 
 .href-icon-pre{

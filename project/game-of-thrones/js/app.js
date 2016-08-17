@@ -60,6 +60,19 @@ function initTopScroll() {
 		}, 1500);
 		e.preventDefault();
 	});
+	
+	var volume = true;
+	$('i.volume').bind("click", function(e) {
+		if(volume === true){
+			$(this).html("volume_off");
+			$("#mainTitles")[0].pause();
+			volume = false;
+		}else{
+			$(this).html("volume_up");
+			$("#mainTitles")[0].play();
+			volume = true;
+		}
+	});
 };
 
 // 初始化图片
