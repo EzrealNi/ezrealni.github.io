@@ -1,0 +1,90 @@
+html,body {
+	height: 100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	background: none repeat scroll 0 0 #FFFFFF;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 28px;
+	text-align: center;
+}
+
+.text-hairline-1 {
+	font-size: 50px;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+}
+
+.text-hairline-2 {
+	font-family: "Lato", sans-serif;
+	font-size: 40px;
+	font-weight: 100;
+	letter-spacing: 3px;
+}
+
+.text-hairline-3 {
+	font-family: "Lato", sans-serif;
+	font-size: 30px;
+	font-weight: 100;
+	letter-spacing: 3px;
+}
+
+.text-light-3 {
+	font-family: "Lato", sans-serif;
+	font-size: 30px;
+	font-weight: 300;
+	letter-spacing: 0.1em;
+}
+
+button {
+	background-color: #7ADFA4;
+	background-image: linear-gradient(#CDF3DD, #7ADFA4);
+	background-repeat: repeat-x;
+	border-color: #7ADFA4 #7ADFA4 #66DB96;
+	color: #333333;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: normal;
+	padding: 9px 14px;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	border-image: none;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px
+		rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	display: inline-block;
+	transition: all 0.1s linear 0s;
+	clear: left;
+	display: block;
+	float: left;
+	margin: 15px auto 22px;
+	width: 100%;
+	vertical-align: baseline;
+}
+
+button:hover {
+	background-position: 0 -15px;
+	color: #333333;
+	text-decoration: none;
+}
+
+#dashboard{
+	list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#dashboard img{
+	width: 100%;
+}

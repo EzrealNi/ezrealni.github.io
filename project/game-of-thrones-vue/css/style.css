@@ -1,0 +1,145 @@
+html,body {
+	height: 100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+body{
+	font-family: "Lato",sans-serif;
+	background: none repeat scroll 0 0 #FFFFFF;
+    font-family: 'Lato',sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    text-align: center;
+}
+
+.header {
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	background: none repeat scroll 0 0 #ccdcec;
+	color: #000000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1040;
+	opacity: 0.8;
+}
+
+.header p{
+	margin: 0px;
+}
+
+.index {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background: none repeat scroll 0 0 #757575;
+	overflow: hidden;
+}
+
+.index img {
+/* 	width: 100%; */
+/* 	height: 100%; */
+	opacity: 0.7;
+}
+
+.content {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background: none repeat scroll 0 0 #757575;
+	overflow: hidden;
+}
+
+.content img {
+/* 	width: 100%; */
+/* 	height: 100%; */
+	opacity: 0.7;
+}
+
+.hide {
+	display: none;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	color: #FFFFFF;
+	top: 0;
+	left: 0;
+}
+
+.intro-section {
+	text-align: right;
+    position: absolute;
+    bottom: 0px;
+    right: 50px;
+}
+
+.icon {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #FFFFFF;
+	text-align: left;
+}
+
+.icon i {
+	position: absolute;
+	top: 50%;
+	cursor: pointer;
+}
+
+.audio i.volume {
+	position: fixed;
+	cursor: pointer;
+	top: 80px;
+	right: 30px;
+	z-index: 1040;
+	color: #FFFFFF;
+}
+
+.icon i.href-icon {
+	top: 50%;
+}
+
+.href-icon-pre{
+	left: 30px;
+}
+
+.href-icon-next{
+	right: 30px;
+}
+
+.text-hairline-1{
+	font-size: 50px;
+	font-weight: 100;
+	letter-spacing: 0.1em;
+}
+
+.text-hairline-2{
+	font-family: "Lato",sans-serif;
+	font-size: 40px;
+    font-weight: 100;
+	letter-spacing: 3px;
+}
+
+.text-hairline-3{
+	font-family: "Lato",sans-serif;
+	font-size: 30px;
+	font-weight: 100;
+	letter-spacing: 3px;
+}
+
+.text-light-3{
+	font-family: "Lato",sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
