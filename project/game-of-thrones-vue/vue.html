@@ -16,7 +16,7 @@
 	
 	<div id="content">
 		<ul id="dashboard">
-			<li v-for="index in srcList" v-bind:id ="'li_'+index" :is="currentView" class="animated">
+			<li v-for="index in srcList" data="{{index}}" v-bind:id ="'li_'+index" v-show ="1++" class="animated">
 				<img v-bind:src =" 'img/'+index+'.jpg'">
 			</li>
 		</ul>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Carousel</title>
+</head>
+<body>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="500">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" v-bind:data-slide-to="$index+1" v-for="index in srcList"></li>
+    </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="img/400.jpg">
+        </div>
+        <div class="item" v-for="index in srcList">
+            <img v-bind:src =" 'img/'+index+'.jpg'">
+        </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel"
+        data-slide="prev">&lsaquo;
+    </a>
+    <a class="carousel-control right" href="#myCarousel"
+        data-slide="next">&rsaquo;
+    </a>
+    
+</div> 
+
+	<div style="text-align: center;margin-top: 50px;">
+	    <button v-on:click="changeCraousel()">change</button>
+	    <button v-on:click="pauseCraousel()">pause</button>
+	    <button v-on:click="runCraousel()">run</button>
+	</div>
+	<script src="../plugins/jquery/jquery-3.0.0.min.js"></script>
+	<script src="../plugins/vue/vue.js"></script>
+	<script type="text/javascript" src="js/carousel.js"></script>
+</body>
+</html>
