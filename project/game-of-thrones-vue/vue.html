@@ -5,20 +5,25 @@
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link href="../plugins/fonts/css/font-lato.css" type="text/css" rel="stylesheet"/>
-	<link href="../plugins/animate/animate.css" type="text/css" rel="stylesheet"/>
+<!-- 	<link href="../plugins/animate/animate.css" type="text/css" rel="stylesheet"/> -->
 	<link href="css/vue.css" rel="stylesheet" type="text/css">
 	<title>vue</title>
 </head>
 <body>
 	<div class="audio">
-		<audio id="mainTitles" src="img/Main-Titles.mp3" autoplay="autoplay" loop="loop"></audio>
+<!-- 		<audio id="mainTitles" src="img/Main-Titles.mp3" autoplay="autoplay" loop="loop"></audio> -->
 	</div>
 	
 	<div id="content">
 		<div class="carousel">
 			<ul class="carousel-inner">
 				<li v-for="index in srcList" :data-index="index" :id ="'li_'+index" class="item" :class="{'active' : $index == carouselConfig.activeItem}">
-					<img class="animated" :class="{'bounceOutLeft' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutLeft', 'bounceOutRight' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutRight', 'bounceInRight' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInRight', 'bounceInLeft' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInLeft'}" :src ="'img/'+index+'.jpg'">
+					<img class="animated"
+					:class="{'bounceOutDown' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutLeft',
+							'bounceOutUp' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutRight',
+							'bounceInDown' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInRight',
+							'bounceInUp' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInLeft'}"
+					:src="'img/'+index+'.jpg'">
 				</li>
 			</ul>
 		</div>
