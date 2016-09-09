@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Modal</title>
+<style type="text/css">
+	html,body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.main {
+		height: 100%;
+		background: #26A69A;
+	}
+	
+	.modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #000000;
+		opacity: 0.8;
+		z-index: 1;
+	}
+	
+	.modal-header {
+		height: 20%;
+	}
+	
+	.modal-body {
+		width: 70%;
+		height: 60%;
+		background: #E91E63;
+		margin: 0 auto;
+	}
+	
+	.modal-footer {
+		height: 20%;
+	}
+	
+	.hide {
+		display: none;
+	}
+	
+	@-webkit-keyframes bounceInDown {
+	  from, 60%, 75%, 90%, to {
+	    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	  }
+	
+	  0% {
+	    opacity: 0;
+	    -webkit-transform: translate3d(0, -3000px, 0);
+	    transform: translate3d(0, -3000px, 0);
+	  }
+	
+	  60% {
+	    opacity: 1;
+	    -webkit-transform: translate3d(0, 25px, 0);
+	    transform: translate3d(0, 25px, 0);
+	  }
+	
+	  75% {
+	    -webkit-transform: translate3d(0, -10px, 0);
+	    transform: translate3d(0, -10px, 0);
+	  }
+	
+	  90% {
+	    -webkit-transform: translate3d(0, 5px, 0);
+	    transform: translate3d(0, 5px, 0);
+	  }
+	
+	  to {
+	    -webkit-transform: none;
+	    transform: none;
+	  }
+	}
+
+	@keyframes bounceInDown {
+	  from, 60%, 75%, 90%, to {
+	    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	  }
+	
+	  0% {
+	    opacity: 0;
+	    -webkit-transform: translate3d(0, -3000px, 0);
+	    transform: translate3d(0, -3000px, 0);
+	  }
+	
+	  60% {
+	    opacity: 1;
+	    -webkit-transform: translate3d(0, 25px, 0);
+	    transform: translate3d(0, 25px, 0);
+	  }
+	
+	  75% {
+	    -webkit-transform: translate3d(0, -10px, 0);
+	    transform: translate3d(0, -10px, 0);
+	  }
+	
+	  90% {
+	    -webkit-transform: translate3d(0, 5px, 0);
+	    transform: translate3d(0, 5px, 0);
+	  }
+	
+	  to {
+	    -webkit-transform: none;
+	    transform: none;
+	  }
+	}
+
+	.bounceInDown {
+	  -webkit-animation-name: bounceInDown;
+	  animation-name: bounceInDown;
+	}
+
+	.animated {
+	  -webkit-animation-duration: 1s;
+	  animation-duration: 1s;
+	  -webkit-animation-fill-mode: both;
+	  animation-fill-mode: both;
+	}
+</style>
+</head>
+<body>
+	<div class="main"></div>
+	<div class="modal hide">
+		<div class="modal-header"></div>
+		<div class="modal-body"></div>
+		<div class="modal-footer"></div>
+	</div>
+	<script type="text/javascript">
+		modal("show");
+		modal("hide");
+		function modal(type) {
+			if(type == "hide"){
+				document.querySelector(".modal").addEventListener('click',function(event) {
+					if (event.target.classList.toString().indexOf(
+							"modal-body") == -1) {
+						if ("classList" in document.documentElement) {
+							document.querySelector(".modal").classList.add('hide');
+						} else {
+							document.querySelector(".modal").className = "hide";
+						}
+					}
+				});
+			}else if(type == "show"){
+				document.querySelector(".main").addEventListener('click',function(event) {
+					if ("classList" in document.documentElement) {
+						document.querySelector(".modal").classList.remove('hide');
+						document.querySelector(".modal-body").classList.add('animated','bounceInDown');
+					} else {
+						document.querySelector(".modal").className = "modal animated bounceInDown";
+					}
+				});
+			}
+
+		}
+	</script>
+</body>
+</html>

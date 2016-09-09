@@ -11,24 +11,29 @@
 </head>
 <body>
 	<div class="audio">
-		<audio id="mainTitles" src="img/Main-Titles.mp3"></audio>
+		<audio id="mainTitles" src="img/Main-Titles.mp3" autoplay="autoplay" loop="loop"></audio>
 	</div>
 	
 	<div id="content">
-		<ul id="dashboard">
-			<li v-for="index in srcList" data="{{index}}" v-bind:id ="'li_'+index" v-show ="1++" class="animated">
-				<img v-bind:src =" 'img/'+index+'.jpg'">
-			</li>
-		</ul>
-<!-- 		<img id="show_board" v-show="show" v-bind:src =" 'img/'+picName" class="animated"> -->
-<!-- 		<div v-show="show" class="text-hairline-1" transition="bounce">Never forget what you are.</div> -->
+		<div class="carousel">
+			<ul class="carousel-inner">
+				<li v-for="index in srcList" :data-index="index" :id ="'li_'+index" class="item" :class="{'active' : $index == carouselConfig.activeItem}">
+					<img class="animated" :class="{'bounceOutLeft' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutLeft', 'bounceOutRight' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutRight', 'bounceInRight' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInRight', 'bounceInLeft' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInLeft'}" :src ="'img/'+index+'.jpg'">
+				</li>
+			</ul>
+		</div>
 		
-<!-- 		<div id="bounce" v-show="show" class="text-hairline-1 animated" transition="bounce">Never forget what you are.</div> -->
-		<button v-on:click="removeTodo()">toggle</button>
+		<div class="buttonGroup">
+			<button @click="carousel('cycle')">cycle</button>
+			<button @click="carousel('pause')">pause</button>
+			<button @click="carousel('prev')">prev</button>
+			<button @click="carousel('next')">next</button>
+			<button @click="carousel(0)">first</button>
+			<button @click="carousel(srcList.length-1)">last</button>
+		</div>
 	</div>
 	
-	
 	<script src="../plugins/vue/vue.js"></script>
-	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/vue-app.js"></script>
 </body>
 </html>

@@ -1,3 +1,15 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html,body {
 	height: 100%;
 	width: 100%;
@@ -13,6 +25,10 @@ body {
 	font-weight: 300;
 	line-height: 28px;
 	text-align: center;
+}
+
+.hide{
+	display: none;
 }
 
 .text-hairline-1 {
@@ -65,11 +81,10 @@ button {
 	cursor: pointer;
 	display: inline-block;
 	transition: all 0.1s linear 0s;
-	clear: left;
 	display: block;
 	float: left;
 	margin: 15px auto 22px;
-	width: 100%;
+	width: 100px;
 	vertical-align: baseline;
 }
 
@@ -79,12 +94,29 @@ button:hover {
 	text-decoration: none;
 }
 
-#dashboard{
+button:focus {
+	outline: none;
+}
+
+.carousel-inner{
 	list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-#dashboard img{
+.carousel-inner img{
 	width: 100%;
+}
+
+.carousel-inner > .item:not(active){
+	display: none;
+}
+
+.carousel-inner > .item.active{
+	display: inline;
+}
+
+.buttonGroup button{
+	float: left;
+	margin-left: 10px;
 }
