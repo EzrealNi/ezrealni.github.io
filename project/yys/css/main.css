@@ -78,6 +78,11 @@ input:focus{
 	display: table-row;
 }
 
+.table-row .table-cell:first-child{
+    white-space: nowrap;
+    vertical-align: top;
+}
+
 .table-cell{
 	display: table-cell;
     padding: 5px;
