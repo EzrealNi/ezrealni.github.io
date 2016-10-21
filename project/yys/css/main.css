@@ -26,7 +26,11 @@ body{
 }
 
 .content{
-	margin-top: 15px;
+	margin-top: 5px;
+}
+
+.search{
+    margin: 0 10px 0 5px;
 }
 
 input{
@@ -42,7 +46,7 @@ input{
     /* Opera */
     background-position: 100% !important;
     z-index: -1;
-    width: 260px;
+    width: 100%;
     height: 39px;
     padding-top: 4px;
     padding-left: 7px;
