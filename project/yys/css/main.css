@@ -82,7 +82,7 @@ input:focus{
 	display: table-row;
 }
 
-.table-row .table-cell:first-child{
+.table-row .table-cell:first-child,.table.clue .table-row .table-cell:nth-child(2){
     white-space: nowrap;
     vertical-align: top;
 }
