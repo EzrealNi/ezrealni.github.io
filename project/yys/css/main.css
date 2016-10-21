@@ -1,19 +1,99 @@
+body{
+	background-color: #f1f1f1;
+	font-family: 'Open Sans', Helvetica, Tahoma, Arial, 'Microsoft YaHei', 微软雅黑, STXihei, 华文细黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+}
+
+@media only screen and (min-width: 0) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    html {
+        font-size: 14.5px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+}
+
 .hide{
-  display: none;
+  display: none!important;
+}
+
+.content{
+	margin-top: 15px;
 }
 
 input{
-	border: 1px solid #e0e0e0;
-    font-size: 14px;
-    height: 48px;
-    line-height: 48px;
-    outline: 0 none;
-    padding: 0 10px;
-    transition: all 0.2s ease 0s;
-    width: 223px;
-    z-index: 1;
-    box-sizing: content-box;
-     margin: 0;
-    vertical-align: baseline;
-     font-family: sans-serif;
+	background-color: #FFF;
+	border: none;
+    border-radius: 3px;
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    /* Firefox 4 */
+    -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    /* Safari and Chrome */
+    -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    /* Opera */
+    background-position: 100% !important;
+    z-index: -1;
+    width: 260px;
+    height: 39px;
+    padding-top: 4px;
+    padding-left: 7px;
+    font: 16px arial;
+}
+
+input:focus{
+	outline: none;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.table{
+	display: table;
+	border-collapse: collapse;
+	min-width: 30%;
+}
+
+.table-caption{
+	display: table-caption;
+	border: none;
+    padding: 15px 5px 5px 5px;
+    text-align: left;
+    vertical-align: middle;
+    
+    font-weight: bold;
+}
+
+.table-row-group{
+	display: table-row-group;
+}
+
+.table-row{
+	display: table-row;
+}
+
+.table-cell{
+	display: table-cell;
+    padding: 5px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.chapter-header .table-cell{
+	padding-top: 10px;
+    font-weight: bolder;
+}
+
+.table-row.chapter-header{
+    border-bottom: 1px solid #d0d0d0;
+}
+
+span.light{
+    color: #dd4b39;
 }
