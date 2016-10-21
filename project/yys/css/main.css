@@ -26,11 +26,14 @@ body{
 }
 
 .content{
-	margin-top: 5px;
+	margin-top: 60px;
 }
 
 .search{
-    margin: 0 10px 0 5px;
+    position: fixed;
+    width: 93%;
+    left: 10px;
+    top: 10px;
 }
 
 input{
