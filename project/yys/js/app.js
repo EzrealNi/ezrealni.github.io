@@ -1,7 +1,7 @@
 function search(matchValue) {
 	var searchStr = matchValue || document.querySelector("#searchItem").value,
 		cellList = document.querySelectorAll(".content .table > .table-row-group > .table-row > .table-cell");
-	
+
 	resetLightFont();
 	removeChildNodesHide(document.querySelector(".content"));
 	if(searchStr && searchStr.trim()){
@@ -23,9 +23,10 @@ function displayCell(searchStr,cellList){
 			}else{
 				$currentCell.classList.remove("hide");
 				var lightHtml = "<span class='light'>"+searchStr+"</span>";
-				$currentCell.innerHTML = innerHTML.replace(searchStr,lightHtml);
+//				$currentCell.innerHTML = innerHTML.replace(searchStr,lightHtml);
+				$currentCell.innerHTML = innerHTML.split(searchStr).join(lightHtml);//replaceAll
 			}
-		} else {
+		} else{
 			$currentCell.classList.add("hide");
 		}
 	}
