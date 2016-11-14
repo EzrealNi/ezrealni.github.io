@@ -1,6 +1,6 @@
 body{
 	background-color: #f1f1f1;
-	font-family: 'Open Sans', Helvetica, Tahoma, Arial, 'Microsoft YaHei', 微软雅黑, STXihei, 华文细黑, SimSun, 宋体, Heiti, 黑体, sans-serif;
+	font-family: 'Open Sans', Helvetica, Tahoma, Arial, 'Microsoft YaHei', sans-serif;
 }
 
 @media only screen and (min-width: 0) {
