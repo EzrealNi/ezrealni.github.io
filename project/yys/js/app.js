@@ -58,8 +58,10 @@ function displayChapter(){
 				$currentGroup.classList.add("hide");
 			}else{
 				$currentGroup.classList.remove("hide");
-				var $currentGroupHeader = $currentGroup.querySelector(".table-row.chapter-header");
-				if($currentGroupHeader.classList.contains("hide")){
+				var $currentGroupHeader = $currentGroup.querySelector(".table-row.chapter-header"),
+					$currentGroupContent = $currentGroup.querySelectorAll(".table-row:not(.chapter-header)");
+				if($currentGroupHeader.classList.contains("hide")
+						&& $currentGroupContent[0].querySelectorAll(".table-cell")[0].innerHTML.indexOf("回合") === -1){
 					$currentGroupHeader.classList.remove("hide");
 					removeChildNodesHide($currentGroupHeader);
 				}else{
