@@ -2,10 +2,9 @@
 <html lang="en" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=1080">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 	<title>Star</title>
-	<link href="project/stars/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="project/stars/css/star.css" rel="stylesheet" type="text/css">
+	<link href="css/star.css" rel="stylesheet" type="text/css">
 </head>
 <body ng-controller="Ctrl">
 	<div class="fav-list">
@@ -25,24 +24,14 @@
 	</div>
 	
 	<div class="loading-zone" id="progress-loading-l" ng-show="loading">
-		<div class="text">loading...{{loadingProgress}}%</div>
+		<div class="text" ng-bind="'loading...'+ loadingProgress +'%'"></div>
 		<div class="progress progress-striped active">
 			<div ng-style="loadingPercent" class="bar"></div>
 		</div>
 	</div>
-	
-	<div class="row" id="progress-loading" ng-show="progress">
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="spinner"></div>
-<!-- 			<div style="display: inline-block; height: 100%; width: 178px; position: relative; left: 48%;" class="progress progress-xs progress-striped active"> -->
-<!--             	<div class="progress-bar progress-bar-primary" style="width: 100%">Loading the next 20 records</div> -->
-<!--             </div> -->
-		</div>
-	</div>
 
-	<script src="project/stars/plugins/jquery/jquery-3.0.0.min.js"></script>
-	<script src="project/stars/plugins/angular/angular.min.js"></script>
-	<script src="project/stars/plugins/bootstrap/bootstrap.min.js"></script>
-	<script type="text/javascript" src="project/stars/js/star-baidu.js"></script>
+	<script src="plugins/jquery/jquery-3.0.0.min.js"></script>
+	<script src="plugins/angular/angular.min.js"></script>
+	<script type="text/javascript" src="js/star-baidu.js"></script>
 </body>
 </html>
