@@ -1,5 +1,5 @@
 var url = document.referrer || window.location.href,
-	urlExcept = ['nixin.online','ezrealni.github.io','18183.com/yys'];
+	urlExcept = ['JavaWork','nixin.online','ezrealni.github.io','mixinsoft.github.io','18183.com/yys'];
 var contains = listContainsStr(urlExcept,url);
 if(!contains){
 //if(top != self){
@@ -25,6 +25,9 @@ var _hmt = _hmt || []; (function() {
 function search(matchValue) {
 	var searchStr = matchValue || document.querySelector("#searchItem").value,
 	cellList = document.querySelectorAll(".content .table > .table-row-group > .table-row > .table-cell");
+	if(searchStr.indexOf('*') > -1 || searchStr.indexOf('x') > -1){
+		searchStr = searchStr.split('*').join('×').split('x').join('×');
+	}
 
 	removeChildNodesHide(document.querySelector(".content"));
 	resetLightFont();

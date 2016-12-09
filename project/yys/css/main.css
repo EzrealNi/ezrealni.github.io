@@ -33,6 +33,7 @@ body {
 }
 .content {
 	margin-top:40px;
+	min-height: calc(100% - 65px);
 }
 .search-bar {
 	position:fixed;
@@ -124,14 +125,27 @@ span.light {
 }
 footer {
 	padding:5px;
-}
-.suggest {
-	color:#787a7d;
-	text-decoration:none;
-	font-size:12px;
-	line-height:21px;
 	text-align:center;
 }
-.suggest:hover {
+footer a{
+	color:#787a7d;
+	font-size:12px;
+	line-height:21px;
+}
+footer a:hover {
 	text-decoration:underline;
+}
+.suggest {
+	text-decoration:none;
+	position:absolute;
+	left: 10px;
+}
+.copy-right{
+    color: #787a7d;
+    font-size: 12px;
+    line-height: 21px;
+}
+
+em.mode{
+	color: #ff0000;
 }
