@@ -1,0 +1,17 @@
+{
+  "name": "Open TT",
+  "description": "Open the task tracking system",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_title": "Open the task tracking system",
+    "default_icon":"go_tt.png"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}

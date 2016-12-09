@@ -1,0 +1,46 @@
+*{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+}
+
+body{
+	background-color: #000000;
+	width: 400px;
+	height: 300px;
+	overflow: hidden;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+	color: #ffffff;
+}
+
+.header{
+	padding: 0;
+	margin: 20px 0px;
+}
+
+.row{
+	padding: 0;
+	margin: 10px 0px 0px 0px;
+    overflow: hidden;
+}
+
+.title{
+	float: left;
+}
+
+.control{
+	border: none;
+	outline: none;
+	overflow: hidden;
+}
+
+.control .textarea{
+	border: none;
+	outline: none;
+	width: 100%;
+}
+
+.hide{
+	display: none;
+}

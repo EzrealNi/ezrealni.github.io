@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width">
+		<title>Hello World</title>
+		<link href="main.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<div class="header">
+			Enter your Task Track Info.
+		</div>
+		
+		<div class="content">
+			<div class="row hours_row">
+				<div class="title">
+					<label for="tt_hours">Hours >&nbsp;</label>
+				</div>
+				<div class="control">
+					<div id="tt_hours" class="textarea" contenteditable=true>
+					</div>
+				</div>
+			</div>
+			<div class="row description_row">
+				<div class="title">
+					<label for="tt_description">Description >&nbsp;</label>
+				</div>
+				<div class="control">
+					<div id="tt_description" class="textarea" contenteditable=true>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row autocommit_row">
+				<div class="title">
+					<label for="tt_autocommit">Autocommit < Y/N >?&nbsp;</label>
+				</div>
+				<div class="control">
+					<div id="tt_autocommit" class="textarea" contenteditable=true>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer">
+		</div>
+		
+		<script src="index.js" type="text/javascript"></script>
+	</body>
+</html>

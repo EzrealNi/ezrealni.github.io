@@ -19,22 +19,22 @@
 			<ul class="carousel-inner">
 				<li v-for="index in srcList" :data-index="index" :id ="'li_'+index" class="item" :class="{'active' : $index == carouselConfig.activeItem}">
 					<img class="animated"
-					:class="{'bounceOutDown' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutLeft',
-							'bounceOutUp' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutRight',
-							'bounceInDown' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInRight',
-							'bounceInUp' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInLeft'}"
+					:class="{'bounceOutLeft' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutLeft',
+							'bounceOutRight' : $index == carouselConfig.lastItem && carouselConfig.outClass == 'bounceOutRight',
+							'bounceInRight' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInRight',
+							'bounceInLeft' : $index == carouselConfig.activeItem && carouselConfig.inClass == 'bounceInLeft'}"
 					:src="'img/'+index+'.jpg'">
 				</li>
 			</ul>
-		</div>
 		
-		<div class="buttonGroup">
-			<button @click="carousel('cycle')">cycle</button>
-			<button @click="carousel('pause')">pause</button>
-			<button @click="carousel('prev')">prev</button>
-			<button @click="carousel('next')">next</button>
-			<button @click="carousel(0)">first</button>
-			<button @click="carousel(srcList.length-1)">last</button>
+			<div class="buttonGroup">
+				<button @click="carousel('cycle')">cycle</button>
+				<button @click="carousel('pause')">pause</button>
+				<button @click="carousel('prev')">prev</button>
+				<button @click="carousel('next')">next</button>
+				<button @click="carousel(0)">first</button>
+				<button @click="carousel(srcList.length-1)">last</button>
+			</div>
 		</div>
 	</div>
 	

@@ -1,0 +1,20 @@
+{
+  "name": "TT entry",
+  "description": "Entry today's task tracking",
+  "version": "1.1",
+  "manifest_version": 2,
+  "permissions": [
+    "tabs"
+  ],
+  "browser_action": {
+    "default_title": "Entry today's task tracking",
+    "default_icon":"tt_entry.png",
+    "default_popup":"index.html"
+  },
+  "content_scripts": [
+        {
+            "matches": ["http://myhengtian:8033/WorkingReport/*"],
+            "js": ["app.js"]
+        }
+    ]
+}

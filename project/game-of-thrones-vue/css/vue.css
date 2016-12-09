@@ -393,7 +393,14 @@ button:focus {
 	outline: none;
 }
 
+.carousel{
+	position: relative;
+}
+
 .carousel-inner{
+	position: relative;
+    left: 0px;
+    top: 0px;
 	list-style-type: none;
     padding: 0;
     margin: 0;
@@ -404,11 +411,16 @@ button:focus {
 }
 
 .carousel-inner > .item:not(active){
-	display: none;
+/* 	display: none; */
 }
 
 .carousel-inner > .item.active{
-	display: inline;
+/* 	display: block; */
+}
+
+.item{
+	width: 100%;
+	display: block;
 }
 
 .buttonGroup button{

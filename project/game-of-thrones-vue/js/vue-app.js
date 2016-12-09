@@ -83,7 +83,7 @@ var vm = new Vue({
 	}
 }); 
 
-vm.cycle({'interval' : '2000'});
+//vm.cycle({'interval' : '2000'});
 
 function random(min,max){
     return Math.floor(min+Math.random()*(max-min));
