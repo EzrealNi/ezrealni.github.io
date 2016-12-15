@@ -32,7 +32,7 @@ angular.module('app', []).controller('Ctrl', function($scope, $http, $q) {
 	    windowH = $(window).height(), // current window's height
 	    y = $(window).scrollTop(), // current scroll y
 	    hisTableHeight =  hisTable.height() + hisTable.offset().top, // total height
-	    loadingTop = $("#progress-loading-l").offset().top;
+	    loadingTop = $("#progress-loading").offset().top;
 		/* type1:  */
 		if (y + windowH > hisTableHeight && $scope.loading == false ) {
 			loadNextPage();
