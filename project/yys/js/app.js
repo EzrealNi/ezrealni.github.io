@@ -1,5 +1,5 @@
 var url = document.referrer || window.location.href,
-	urlExcept = ['JavaWork','nixin.online','ezrealni.github.io','mixinsoft.github.io','18183.com/yys'];
+	urlExcept = ['javawork','JavaWork','nixin.online','ezrealni.github.io','mixinsoft.github.io','18183.com/yys'];
 var contains = listContainsStr(urlExcept,url);
 if(!contains){
 //if(top != self){

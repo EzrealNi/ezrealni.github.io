@@ -6,12 +6,14 @@
 html,body {
 	height:100%;
 	font-size:0;
+    overflow: hidden;
 }
 body {
-	background-color:#fff;
+	background-color:rgb(160, 128, 96);
 	font-family:Arial,sans-serif;
 	margin:0;
 	padding:10px 10px 10px 7px;
+	color:rgba(238,255,255,.8);
 }
 @media only screen and (min-width:0) {
 	.content,.msg {
@@ -33,13 +35,16 @@ body {
 }
 .content {
 	margin-top:40px;
-	min-height: calc(100% - 65px);
+	min-height: calc(100% - 20px);
+    position: relative;
 }
 .search-bar {
 	position:fixed;
 	width:calc(100% - 17px);
 	left:7px;
 	top:10px;
+    text-align: center;
+    z-index: 99;
 }
 .search-control {
 	width:100%;
@@ -113,7 +118,7 @@ body {
 	border-bottom:1px solid #d0d0d0;
 }
 span.light {
-	color:#dd4b39;
+	color:rgba(195,232,141,1);
 }
 .msg {
 	color:#a94442;
@@ -128,7 +133,7 @@ footer {
 	text-align:center;
 }
 footer a{
-	color:#787a7d;
+	color: rgba(238,255,255,1);
 	font-size:12px;
 	line-height:21px;
 }
@@ -141,11 +146,31 @@ footer a:hover {
 	left: 10px;
 }
 .copy-right{
-    color: #787a7d;
+    color: rgba(238,255,255,1);
     font-size: 12px;
     line-height: 21px;
 }
-
-em.mode{
-	color: #ff0000;
+.mask{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: url(../img/tshirt_red_icon.png);
+    opacity: .6;
+    filter: blur(90px);
+    -webkit-filter: blur(90px);  /* chrome, opera */
+    -ms-filter: blur(90px);
+    -moz-filter: blur(90px);
+}
+.content-table{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
