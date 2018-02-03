@@ -1,0 +1,10 @@
+body {
+  border: 1px solid red;
+  p:nth-of-type(2) {
+    color: red;
+  }
+}
+
+*{
+  box-sizing: border-box;
+}
