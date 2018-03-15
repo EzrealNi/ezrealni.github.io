@@ -1,0 +1,49 @@
+.legBox {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  overflow: hidden;
+  border-style: solid; }
+  .legBox.horizontal li {
+    float: left; }
+    .legBox.horizontal li:last-child {
+      margin-right: 0 !important; }
+  .legBox.vertical li:last-child {
+    margin-bottom: 0 !important; }
+  .legBox span {
+    margin-left: 6px;
+    vertical-align: middle; }
+  .legBox i {
+    display: inline-block;
+    vertical-align: middle; }
+    .legBox i.roundRect {
+      border-radius: 4px; }
+    .legBox i.circle {
+      -webkit-clip-path: circle();
+      clip-path: circle(); }
+    .legBox i.line {
+      /*clip-path: polygon(0% 40%, 100% 40%, 100% 60%, 0% 60%);*/
+      -webkit-clip-path: url(#lineClipPath);
+      clip-path: url(#lineClipPath); }
+    .legBox i.diamond {
+      -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+    .legBox i.triangle {
+      -webkit-clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%); }
+    .legBox i.image {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain; }
+.axis.bottom .yAxis.no-boundary-gap g.tick.split-line.min > line {
+  display: none; }
+
+.axis.top .yAxis.no-boundary-gap g.tick.split-line.max > line {
+  display: none; }
+
+.axis.left .xAxis.no-boundary-gap g.tick.split-line.min > line {
+  display: none; }
+
+.axis.right .xAxis.no-boundary-gap g.tick.split-line.max > line {
+  display: none; }

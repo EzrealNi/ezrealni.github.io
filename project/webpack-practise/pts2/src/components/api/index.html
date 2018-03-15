@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>vcharts--api</title>
+  <link type="text/css" rel="stylesheet" href="highlight/styles/atom-one-dark.css" />
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="menu">
+    <ul>
+      <li>
+        <a href="#qs">Quick Start</a>
+      </li>
+      <li>
+        <a href="#grid">Grid</a>
+      </li>
+      <li>
+        <a href="#legend">Legend</a>
+      </li>
+      <li>
+        <a href="#axis">xAxis || yAxis</a>
+      </li>
+      <li>
+        <a href="#bar">Bar</a>
+      </li>
+      <li>
+        <a href="#line">Line</a>
+      </li>
+      <li>
+        <a href="#pie">Pie</a>
+      </li>
+    </ul>
+  </div>
+  <h1 class="title">vcharts--api</h1>
+  <h2 id="qs">Quick Start</h2>
+  <pre>
+    <code class="js">
+const options = {
+  xAxis: {
+    data: ['2017-12-1', '2017-12-2', '2017-12-3', '2017-12-4', '2017-12-5', '2017-12-6']
+  },
+  series: [
+    {
+      type: 'bar',
+      name: 'AQI',
+      data: [103, 102, 97, 123, 149, 112]
+    },
+    {
+      type: 'bar',
+      name: 'PM2.5',
+      data: [77, 76, 72, 93, 114, 84]
+    }
+  ]
+};
+
+const myChart = vcharts.init('#chart');
+myChart.setOption(options);
+
+// update
+myChart.setOption(options);
+    </code>
+  </pre>
+  <h2 id="grid">Grid</h2>
+  <pre>
+      <code class="js">
+const option = {
+  grid: {
+    // 是否显示grid
+    show: true,
+    // 网格背景色，默认透明。
+    backgroundColor: 'transparent',
+    // 网格的边框颜色。
+    borderColor: '#ccc',
+    // 网格的边框线宽。
+    borderWidth: 0,
+    // grid 组件离容器上侧的距离。
+    top: 60,
+    // grid 组件离容器左侧的距离。
+    left: 80,
+    // grid 组件离容器下侧的距离。
+    bottom: 60,
+    // grid 组件离容器右侧的距离。
+    right: 80
+  };
+};
+      </code>
+  </pre>
+
+  <h2 id="legend">Legend</h2>
+  <pre>
+      <code class="js">
+const option = {
+  legend: [{
+    // 层叠
+    zIndex: 0,
+    // 是否显示
+    show: true,
+    // 布局方式，默认为水平布局，可选为: 'horizontal' | 'vertical'
+    orient: 'horizontal',
+    // 水平方向位置 'left', 'center', 'right'; 具体数值: 34，'34px'; 百分比: '20%'
+    // 优先级right > left 默认值right: 0
+    left: undefined,
+    right: undefined,
+    // 竖直方向位置 'top', 'middle', 'bottom'; 具体数值: 34，'34px'; 百分比: '20%'
+    // 优先级top > bottom 默认值top: 0
+    bottom: undefined,
+    top: undefined,
+    // 图例背景颜色
+    backgroundColor: 'rgba(0,0,0,0)',
+    // 图例边框颜色
+    borderColor: '#fff',
+    // 图例圆角半径，单位px，默认为0, 支持传入数组分别指定 4 个圆角半径
+    borderRadius: 0,
+    // 图例边框线宽，单位px，默认为0（无边框）
+    borderWidth: 0,
+    // 图例内边距，单位px，默认各方向内边距为5; 接受数组分别设定上右下左边距，同css: [2,3]; [3,3,3,3]
+    padding: 5,
+    textStyle: {
+      // 图例文字颜色
+      color: myChart.util.config.mainColor,
+      fontSize: 14
+    },
+    // 各个item之间的间隔，单位px，默认为10; 横向布局时为水平间隔，纵向布局时为纵向间隔
+    itemGap: 10,
+    // 图例图形宽度
+    itemWidth: 25,
+    // 图例图形高度
+    itemHeight: 14,
+    formatter: function(value) {
+      return value;
+    },
+    // 图例内容（详见legend.data，数组中每一项代表一个item
+    // name: 图例项的名称;
+    // icon: bar默认roundRect, line 默认lineDot
+    // 提供 'line', 'circle', 'rect', 'roundRect', 'triangle', 'diamond';
+    // 'image://url' (svg,png,jpg...)
+    // 图例的颜色
+    // iconStyle: {
+    //   backgroundColor: '#ccc'
+    // }
+    data: []
+  }]
+};
+      </code>
+  </pre>
+
+  <h2 id="axis">xAxis || yAxis</h2>
+  <pre>
+      <code class="js">
+const option = {
+  xAxis: [{
+    // 是否显示
+    show: true,
+    // 位置 'xAxis' - 'bottom'|'top' 'yAxis' - 'left'|'right'
+    // 缺失时 xAxis.position 默认为'bottom',yAxis.position 默认为'left'
+    position: axisType === 'xAxis' ? 'bottom' : 'left',
+    // 相对于初始位置的偏移长度，x 'bottom' + 下偏移，x 'top' + 上偏移， y 'left' + 左偏移，y 'right' + 右偏移
+    offset: 0,
+    // 坐标轴类型，'xAxis' - 'category'|'value' 'yAxis' - 'value'|'category'
+    // 缺失时 xAxis.type 默认为'category',yAxis.type 默认为'value'
+    type: axisType === 'xAxis' ? 'category' : 'value',
+    // 轴标注
+    name: '',
+    // 坐标轴名称的文字样式。
+    nameTextStyle: {
+      // 坐标轴名称的颜色，默认取 axisLine.lineStyle.color。
+      color: null,
+      // 坐标轴名称文字字体的风格。 'normal'|'italic'|'oblique'
+      fontStyle: 'normal',
+      // 坐标轴名称文字字体的粗细 'normal'|'bold'|'bolder'|'lighter'|100 | 200 | 300 | 400...
+      fontWeight: 'normal',
+      // 坐标轴名称文字的字体系列  还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+      fontFamily: 'sans-serif',
+      // 坐标轴名称文字的字体大小
+      fontSize: 12
+    },
+    // 坐标轴两边留白策略，类目轴和非类目轴的设置和表现不一样。
+    // boundaryGap: true, 类目轴中 boundaryGap 可以配置为 true 和 false。默认为 true，这时候刻度只是作为分隔线，标签和数据点都会在两个刻度之间的带(band)中间。
+    // boundaryGap: ['10%', '10%'] 非类目轴，包括时间，数值，对数轴，boundaryGap是一个两个值的数组，分别表示数据最小值和最大值的延伸范围，可以直接设置数值或者相对的百分比。
+    boundaryGap: null,
+    // 轴标注偏移长度，x + 右偏移，x - 左偏移，y + 上偏移，y - 下偏移
+    nameGap: 15,
+    // 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+    // 在类目轴中无效。
+    splitNumber: 8,
+    // 坐标轴轴线相关设置。
+    axisLine: {
+      // 是否显示坐标轴轴线。
+      show: true,
+      // 坐标轴线线的样式。
+      lineStyle: {
+        // 坐标轴线线的颜色。
+        color: myChart.util.config.mainColor,
+        // 坐标轴线线的宽度。
+        width: 1,
+        // 坐标轴线线的透明度。
+        opacity: 1
+      }
+    },
+    // 坐标轴刻度相关设置。
+    axisTick: {
+      // 是否显示坐标轴刻度。
+      show: true,
+      // 坐标轴刻度的长度。
+      length: 5,
+      // 刻度线的样式。
+      lineStyle: {
+        // 刻度线的颜色，默认取 axisLine.lineStyle.color。
+        color: null,
+        // 刻度线的宽度
+        width: 1,
+        // 刻度线的透明度
+        opacity: 1
+      }
+    },
+    // 坐标轴刻度标签的相关设置。
+    axisLabel: {
+      // 是否显示刻度标签。
+      show: true,
+      // 刻度标签与轴线之间的距离。
+      margin: 12,
+      // 刻度标签的内容格式器。
+      formatter: (d, i, nodes) => {
+        return d;
+      },
+      // 刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
+      rotate: 0,
+      // 刻度标签文字的颜色，默认取 axisLine.lineStyle.color。支持回调函数。
+      color: null,
+      // color: (d, i, nodes)=> {
+      //   return i > 0 ? '#ff0000' : '#000';
+      // },
+      // 文字字体的风格 'normal'|'italic'|'oblique'
+      fontStyle: 'normal',
+      // 文字字体的粗细 'normal' | 'bold' | 'bolder' | 'lighter' | 100 | 200 | 300 | 400...
+      fontWeight: 'normal',
+      // 文字的字体系列 [ default: 'sans-serif' ] 还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+      fontFamily: 'sans-serif',
+      // 文字的字体大小
+      fontSize: 12
+    },
+    // 坐标轴在 grid 区域中的分隔线。
+    splitLine: {
+      // 是否显示分隔线。默认数值轴显示，类目轴不显示。
+      show: null,
+      // 分割线的样式。
+      lineStyle: {
+        // 分割线的颜色
+        color: '#ccc',
+        // 分割线的宽度
+        width: 1,
+        // 分割线的透明度
+        opacity: 1
+      }
+    },
+    // 坐标轴的值域
+    data: []
+  }]
+};
+      </code>
+  </pre>
+
+  <h2 id="bar">Bar</h2>
+  <pre>
+      <code class="js">
+const option = {
+  series: [{
+    // 图形类型
+    type: 'bar',
+    // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
+    name: 'bar-' + index,
+    // 柱形上的值标注
+    markPoint: {
+      // 是否显示
+      show: false,
+      // 标注背景形状
+      symbol: 'rect',
+      // 标注背景尺寸
+      symbolSize: [30, 20],
+      // 标注偏移量 [x,y]
+      symbolOffset: [0, 0],
+      // 标注文本控制
+      label: {
+        normal: {
+          // 文字的颜色。
+          color: myChart.util.config.mainColor,
+          // 文字字体的风格  'normal'|'italic'|'oblique'
+          fontStyle: 'normal',
+          // 文字字体的粗细 'normal'|'bold'|'bolder'|'lighter'|100 | 200 | 300 | 400...
+          fontWeight: 'normal',
+          // 文字的字体系列 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+          fontFamily: 'sans-serif',
+          // 文字的字体大小
+          fontSize: 12,
+          // 标签内容格式器
+          // d-当前个体图形的数据 i-当前个体图形的索引值 data-当前图形的数据形成的数组
+          formatter: (d, i, data) => d
+        }
+      },
+      // 标注的样式。
+      itemStyle: {
+        normal: {
+          // 图形的颜色。
+          color: '#051c22',
+          // 图形的描边颜色。
+          borderColor: 'transparent',
+          // 描边线宽。
+          borderWidth: 0,
+          // 图形透明度。
+          opacity: 1
+        }
+      }
+    },
+    // 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用。
+    xAxisIndex: 0,
+    // 使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用。
+    yAxisIndex: 0,
+    // 图形样式
+    itemStyle: {
+      // normal 是图形在默认状态下的样式
+      normal: {
+        // 柱条的颜色。 默认从全局调色盘 util.defaultColor 获取颜色。支持渐变色。支持回调函数。
+        color: myChart.util.defaultColor(index),
+        // color渐变色
+        // color: {
+        //   type: 'linear',
+        //   x: '0%',
+        //   y: '0%',
+        //   x2: '0%',
+        //   y2: '100%',
+        //   colorStops: [
+        //     {
+        //       offset: 0,
+        //       color: '#4CAF50',
+        //       opacity: 0.5 // 0% 处的颜色
+        //     },
+        //     {
+        //       offset: 1,
+        //       color: '#00897B',
+        //       opacity: 0.8 // 100% 处的颜色
+        //     }
+        //   ]
+        // },
+        // color回调函数。
+        // color: (d, i, nodes)=> {
+        //   return i > 5 ? '#ff0000' : '#000';
+        // }
+        // 柱条的描边颜色。
+        borderColor: '#000',
+        // 柱条的描边宽度，默认不描边。
+        borderWidth: 0,
+        // 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。
+        opacity: 1
+      }
+    },
+    // 柱条的宽度，不设时自适应。支持设置成相对于类目宽度的百分比。
+    barWidth: 1 / (length * 2),
+    // 柱间距离，可设百分比（如 '30%'，表示柱子宽度的 30%）。
+    // 如果想要两个系列的柱子重叠，可以设置 barGap 为 '-100%'。这在用柱子做背景的时候有用。
+    // 在同一坐标系上，此属性会被多个 'bar' 系列共享。此属性应设置于此坐标系中最后一个 'bar' 系列上才会生效，并且是对此坐标系中所有 'bar' 系列生效。
+    barGap: '30%',
+    // 系列中的数据内容数组。数组项通常为具体的数据项。
+    // 每一项为该单位对应的值或者object，长度应与xAxis.data.length 一致。
+    // 当每一项为object时，需与formatter属性配合指定value值。
+    // eg: data:[{amount:222,unit:'km'},{amount:333,unit:'km'},{amount:233,unit:'km'}]
+    // formatter: (d,i) => d.amount
+    data: [],
+    formatter: (d, i) => d.value
+  }]
+};
+      </code>
+  </pre>
+
+  <h2 id="line">Line</h2>
+  <pre>
+      <code class="js">
+const option = {
+  series: [{
+    // 图形类型
+    type: 'line',
+    // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
+    name: 'line-' + index,
+    // 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用。
+    xAxisIndex: 0,
+    // 使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用。
+    yAxisIndex: 0,
+    // 是否平滑曲线显示。
+    smooth: false,
+    // 折线拐点的大小
+    symbolSize: 8,
+    // 折线拐点标志的样式。
+    itemStyle: {
+      // normal 是图形在默认状态下的样式
+      normal: {
+        // 点的颜色。 默认取lineStyle.normal.color。
+        color: null,
+        // color渐变色
+        // color: {
+        //   type: 'linear',
+        //   x: '0%',
+        //   y: '0%',
+        //   x2: '0%',
+        //   y2: '100%',
+        //   colorStops: [
+        //     {
+        //       offset: 0,
+        //       color: '#4CAF50',
+        //       opacity: 1 // 0% 处的颜色
+        //     },
+        //     {
+        //       offset: 1,
+        //       color: '#00897B',
+        //       opacity: 1 // 100% 处的颜色
+        //     }
+        //   ]
+        // },
+        // 图形的描边颜色。
+        borderColor: '#000',
+        // 描边线宽。为 0 时无描边。
+        borderWidth: 0,
+        // 图形透明度。
+        opacity: 1
+      }
+    },
+    // 线的样式
+    lineStyle: {
+      normal: {
+        // 线的颜色。 默认从全局调色盘 util.defaultColor 获取颜色。支持渐变色。
+        color: myChart.util.defaultColor(index),
+        // color渐变色
+        // color: {
+        //   type: 'linear',
+        //   x: '0%',
+        //   y: '0%',
+        //   x2: '0%',
+        //   y2: '100%',
+        //   colorStops: [
+        //     {
+        //       offset: 0,
+        //       color: '#4CAF50',
+        //       opacity: 1 // 0% 处的颜色
+        //     },
+        //     {
+        //       offset: 1,
+        //       color: '#00897B',
+        //       opacity: 1 // 100% 处的颜色
+        //     }
+        //   ]
+        // },
+        // 线宽。
+        width: 2,
+        // 图形透明度。
+        opacity: 1
+      }
+    },
+    // 区域样式
+    areaStyle: {
+      normal: {
+        // 线的颜色。 默认无即不渲染。
+        color: null,
+        // color渐变色
+        // color: {
+        //   type: 'linear',
+        //   x: '0%',
+        //   y: '0%',
+        //   x2: '0%',
+        //   y2: '100%',
+        //   colorStops: [
+        //     {
+        //       offset: 0,
+        //       color: '#4CAF50',
+        //       opacity: 1 // 0% 处的颜色
+        //     },
+        //     {
+        //       offset: 1,
+        //       color: '#00897B',
+        //       opacity: 1 // 100% 处的颜色
+        //     }
+        //   ]
+        // },
+        opacity: 0.5
+      }
+    },
+    // 系列中的数据内容数组。数组项通常为具体的数据项。
+    // 每一项为该单位对应的值或者object，长度应与xAxis.data.length 一致。
+    // 当每一项为object时，需与formatter属性配合指定value值。
+    // eg: data:[{amount:222,unit:'km'},{amount:333,unit:'km'},{amount:233,unit:'km'}]
+    // formatter: (d,i) => d.amount
+    data: [],
+    formatter: (d, i) => d.value
+  }]
+};
+      </code>
+  </pre>
+
+  <h2 id="pie">Pie</h2>
+  <pre>
+      <code class="js">
+const option = {
+  series: [{
+    // 图形类型
+    type: 'pie',
+    // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
+    name: 'pies-' + index,
+    // 是否玫瑰图
+    // false 非玫瑰图
+    // 'radius' 扇区圆心角展现数据的百分比，半径展现数据的大小。
+    // 'area' 所有扇区圆心角相同，仅通过半径展现数据大小。
+    roseType: false,
+    // 每一块之间间距大小
+    // 支持数值，支持百分比 0.05 | '5%';
+    padAngle: 0,
+    // 饼图的半径，数组的第一项是内半径，第二项是外半径。
+    // 支持设置成百分比，相对于容器高宽中较小的一项的一半。
+    // 可以将内半径设大显示成圆环图（Donut chart）。
+    // 支持数值 支持百分比 0.75 | 75%
+    // 内径为0时可以简化为 radius: '75%' | radius: '0.75' | radius: ['75%'] | radius: [0.75]
+    radius: [0, '100%'],
+    // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
+    // 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
+    // 支持数值 支持百分比 0.5 | 50%
+    // 横坐标 = 纵坐标 时可以简写为 center: '50%' | center: 0.5 | center: ['50%'] | center: 0.5
+    center: ['50%', '50%'],
+    // 所有扇区的标签配置。当单个扇区的标签配置缺失时会读取此配置。
+    label: {
+      // 普通状态下单个扇区显示的样式
+      normal: {
+        // 是否显示
+        show: true,
+        // 标签内容格式器，支持回调函数
+        formatter: (d, i, data) => d.name,
+        // 文字的颜色。支持回调函数。
+        color: myChart.util.config.mainColor,
+        // 回调函数。 d = data[i];
+        // color: (d, i, data) => d.itemStyle.normal.color;
+        // 文字字体的风格。 'normal' | 'italic' | 'oblique'
+        fontStyle: 'normal',
+        // 文字字体的粗细。 'normal' | 'bold' | 'bolder' | 'lighter' | 100 | 200 | 300 | 400...
+        fontWeight: 'normal',
+        // 文字的字体系列。还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+        fontFamily: 'sans-serif',
+        // 文字的字体大小。
+        fontSize: 12
+      }
+    },
+    // 视觉引导线样式
+    labelLine: {
+      // 普通状态下视觉引导线的样式。
+      normal: {
+        // 是否显示视觉引导线。
+        show: true,
+        // 视觉引导线第一段的长度。
+        length: 30,
+        // 视觉引导项第二段的长度。
+        length2: 20,
+        // 线的样式
+        lineStyle: {
+          // 线的颜色。支持回调函数。
+          color: myChart.util.config.mainColor,
+          // 回调函数。 d = data[i];
+          // color: (d, i, data) => d.itemStyle.normal.color;
+          // 线宽。
+          width: 1,
+          // 图形透明度。
+          opacity: 1
+        }
+      }
+    },
+    // 饼图样式
+    itemStyle: {
+      // 默认状态下的样式
+      normal: {
+        // 图形的颜色。默认从全局调色盘 myChart.util.defaultColor 获取颜色。
+        color: (d, i, data) => myChart.util.defaultColor(i),
+        // 图形的描边颜色。
+        borderColor: myChart.util.config.mainColor,
+        // 描边线宽。
+        borderWidth: 0,
+        // 图形透明度。
+        opacity: 1
+      }
+    },
+    // 数据，数组，每一位的配置参照defaultpieOption。
+    data: []
+  }]
+};
+
+const defaultpieOption = {
+  // 数据值。
+  value: 0,
+  // 数据项名称。
+  name: 'pie' + pieIndex,
+  // 所有扇区的标签配置。当单个扇区的标签配置缺失时会读取此配置。
+  label: {
+    // 普通状态下单个扇区显示的样式
+    normal: {
+      // 是否显示
+      show: true,
+      // 标签内容格式器，支持回调函数
+      formatter: (d, i, data) => d.name,
+      // 文字的颜色。支持回调函数。
+      color: myChart.util.config.mainColor,
+      // 回调函数。 d = data[i];
+      // color: (d, i, data) => {
+      //   return d.itemStyle.normal.color;
+      // },
+      // 文字字体的风格。 'normal' | 'italic' | 'oblique'
+      fontStyle: 'normal',
+      // 文字字体的粗细。 'normal' | 'bold' | 'bolder' | 'lighter' | 100 | 200 | 300 | 400...
+      fontWeight: 'normal',
+      // 文字的字体系列。还可以是 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+      fontFamily: 'sans-serif',
+      // 文字的字体大小。
+      fontSize: 12
+    }
+  },
+  // 视觉引导线样式
+  labelLine: {
+    // 普通状态下视觉引导线的样式。
+    normal: {
+      // 是否显示视觉引导线。
+      show: true,
+      // 视觉引导线第一段的长度。
+      length: 30,
+      // 视觉引导项第二段的长度。
+      length2: 20,
+      // 线的样式
+      lineStyle: {
+        // 线的颜色。
+        color: myChart.util.config.mainColor,
+        // 回调函数。 d = data[i];
+        // color: (d, i, data) => {
+        //   return d.itemStyle.normal.color;
+        // },
+        // 线宽。
+        width: 1,
+        // 图形透明度。
+        opacity: 1
+      }
+    }
+  },
+  // 饼图样式
+  itemStyle: {
+    // 默认状态下的样式
+    normal: {
+      // 图形的颜色。支持回调函数。
+      color: myChart.util.defaultColor(pieIndex),
+      // 颜色回调函数
+      // color: (d,i,data) => myChart.util.defaultColor(pieIndex),
+      // 图形的描边颜色。
+      borderColor: myChart.util.config.mainColor,
+      // 描边线宽。
+      borderWidth: 0,
+      // 图形透明度。
+      opacity: 1
+    }
+  }
+};
+      </code>
+  </pre>
+
+  <script type="text/javascript" src="highlight/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+</body>
+
+</html>

@@ -5,11 +5,284 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>test1</title>
+  <title>Document</title>
 </head>
 
 <body>
-  <p>test 1-1!</p>
+  <div id="chart" style="width:1920px; height:1080px;"></div>
+  <div id="chart-pie" style="width:1920px; height:1080px;"></div>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <!-- <script src="../../dist/js/vendor.js"></script> -->
+  <script src="../../dist/js/index.js"></script>
+  <!-- <script src="../../dist/js/test.js"></script> -->
+  <script>
+    var options = {
+      xAxis: [
+        {
+          splitLine: {
+            show: true
+          },
+          data: [
+            '2017-3-1',
+            '2017-3-2',
+            '2017-3-3',
+            '2017-3-4',
+            '2017-3-5',
+            '2017-3-6',
+            '2017-3-7',
+            '2017-3-8',
+            '2017-3-9',
+            '2017-3-10',
+            '2017-3-11',
+            '2017-3-12'
+          ]
+        },
+        {
+          position: 'top',
+          type: 'category',
+          data: [
+            '2017-3-1',
+            '2017-3-2',
+            '2017-3-3',
+            '2017-3-4',
+            '2017-3-5',
+            '2017-3-6',
+            '2017-3-7',
+            '2017-3-8',
+            '2017-3-9',
+            '2017-3-10',
+            '2017-3-11',
+            '2017-3-12'
+          ]
+        }
+      ],
+      yAxis: [
+        {
+          splitLine: {
+            show: true
+          }
+        },
+        {
+          splitLine: {
+            show: false
+          },
+          position: 'right'
+        }
+      ],
+      series: [
+        {
+          type: 'bar',
+          name: 'bar-0',
+          markPoint: {
+            // 是否显示
+            show: true,
+            // 标注背景形状
+            symbol: 'rect',
+            // 标注背景尺寸
+            symbolSize: [50, 20],
+            // 标注偏移量 [x,y]
+            symbolOffset: [0, 0],
+            // 标注文本控制
+            label: {
+              normal: {
+                // 文字的颜色。
+                color: 'blue',
+                // 文字字体的风格  'normal'|'italic'|'oblique'
+                fontStyle: 'normal',
+                // 文字字体的粗细 'normal'|'bold'|'bolder'|'lighter'|100 | 200 | 300 | 400...
+                fontWeight: 'normal',
+                // 文字的字体系列 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+                fontFamily: 'sans-serif',
+                // 文字的字体大小
+                fontSize: 15,
+                // 标签内容格式器
+                // d-当前个体图形的数据 i-当前个体图形的索引值 data-当前图形的数据形成的数组
+                formatter: (d, i, data) => d
+              }
+            },
+            // 标注的样式。
+            itemStyle: {
+              normal: {
+                // 图形的颜色。
+                color: 'red',
+                // 图形的描边颜色。
+                borderColor: 'yellow',
+                // 描边线宽。
+                borderWidth: 2,
+                // 图形透明度。
+                opacity: 1
+              }
+            }
+          },
+          itemStyle: {
+            normal: {
+              color: '#3398db'
+              // barWidth: '40%'
+            }
+          },
+          xAxisIndex: 0,
+          data: [
+            { amount: -1611 },
+            -3132,
+            503,
+            448,
+            2802,
+            3600,
+            2005,
+            -1189,
+            138,
+            2568,
+            -766,
+            -826
+          ],
+          formatter: (d, i) => d.amount
+        },
+        {
+          type: 'bar',
+          name: 'bar-1',
+          yAxisIndex: 2,
+          data: [
+            { amount: -115 },
+            2365,
+            2808,
+            1777,
+            3518,
+            1150,
+            -285,
+            1118,
+            3604,
+            1936,
+            1788,
+            -594
+          ],
+          formatter: (d, i) => d.amount
+        },
+        {
+          type: 'bar',
+          name: 'bar-2',
+          data: [1392, 3180, 849, -3632, 2935, 2475, 880, 1629, 384, 3842, -3253, 2546]
+        },
+        {
+          type: 'line',
+          name: 'line-1',
+          xAxisIndex: 0,
+          yAxisIndex: 1,
+          areaStyle: {
+            normal: {
+              color: {
+                type: 'linear',
+                x: '0%',
+                y: '0%',
+                x2: '0%',
+                y2: '100%',
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: '#4CAF50',
+                    opacity: 0.5 // 0% 处的颜色
+                  },
+                  {
+                    offset: 1,
+                    color: '#00897B',
+                    opacity: 0.8 // 100% 处的颜色
+                  }
+                ]
+              }
+            }
+          },
+          data: [
+            { amount: -207 },
+            1992,
+            -1064,
+            2130,
+            -1387,
+            821,
+            615,
+            -277,
+            3809,
+            -21,
+            2822,
+            -1667
+          ],
+          formatter: (d, i) => d.amount
+        },
+        {
+          type: 'line',
+          name: 'line-2',
+          data: [
+            { amount: -1166 },
+            -861,
+            -3187,
+            -2784,
+            1002,
+            280,
+            115,
+            -2154,
+            2138,
+            1939,
+            -2796,
+            -2759
+          ],
+          formatter: (d, i) => d.amount
+        }
+      ]
+    };
+    var myChart = vcharts.init('#chart');
+    myChart.setOption(options);
+
+
+    var pieOption = {
+      // legend: {
+      //         data: ['直接访问', '邮件营销', '联盟广告','视频广告','搜索引擎'],
+      //         top: 'middle',
+      //         left: 30,
+      //         orient: 'vertical',
+      //         textStyle: {
+      //           fontSize: 12
+      //         }
+      //         // padding: [2,0,0,0],
+      //         // itemGap: 10,
+      //         // itemWidth: 30,
+      //         // itemHeight: 40
+      //         // formatter: function (name) {
+      //         //     return '访问来源: ' + name;
+      //         // },
+      //     },
+      series: [
+        {
+          name: '访问来源',
+          type: 'pie',
+          // roseType: true,
+          data: [
+            {
+              value: 335,
+              name: '直接访问'
+            },
+            {
+              value: 310,
+              name: '邮件营销'
+            },
+            {
+              value: 434,
+              name: '联盟广告'
+            },
+            {
+              value: 335,
+              name: '视频广告'
+            },
+            {
+              value: 548,
+              name: '搜索引擎'
+            }
+          ]
+        }
+      ]
+    };
+
+
+    var myChart = vcharts.init('#chart-pie');
+    myChart.setOption(pieOption);
+  </script>
 </body>
 
 </html>

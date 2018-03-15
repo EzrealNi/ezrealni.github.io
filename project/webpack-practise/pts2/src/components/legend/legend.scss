@@ -1,0 +1,50 @@
+.legBox {
+	position: absolute;
+	width: fit-content;
+	overflow: hidden;
+	border-style: solid;
+	&.horizontal li {
+		float: left;
+		&:last-child{
+			margin-right: 0 !important;
+		}
+	}
+	&.vertical li:last-child {
+		margin-bottom: 0 !important;
+	}
+	span {
+		margin-left: 6px;
+		vertical-align: middle;
+	}
+	i {
+		display: inline-block;
+	    vertical-align: middle;
+		&.rect {
+			
+		}
+		&.roundRect {
+			border-radius: 4px;
+		}
+		&.circle {
+			//border-raidus: 50%;
+			clip-path: circle();
+		}
+		&.line {
+			/*clip-path: polygon(0% 40%, 100% 40%, 100% 60%, 0% 60%);*/
+			clip-path: url(#lineClipPath);
+		}
+		&.diamond {
+			clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		}
+		&.triangle {
+			clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+		}
+		&.image {
+			// background-image: url('./img/other.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+		}
+	}
+ 
+}

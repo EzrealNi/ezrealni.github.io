@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>svg stacking order</title>
+  <style>
+    #svg {
+      width: 1200px;
+      height: 800px;
+      border: 1px solid #ccc;
+    }
+
+    #svg g.axis g.tick:not(:nth-of-type(1)) line {
+      stroke: #ccc;
+      stroke-dasharray: 3,10;
+    }
+  </style>
+</head>
+
+<body>
+  <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg"></svg>
+  <script type="text/javascript" src="./vender/d3.min.js"></script>
+  <script type="text/javascript" src="./vender/line.js"></script>
+</body>
+
+</html>

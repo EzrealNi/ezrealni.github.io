@@ -54,6 +54,10 @@ const config = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
       }
     ],
     noParse: /lodash|jquery|dash.all.min.js|ol-debug.js/

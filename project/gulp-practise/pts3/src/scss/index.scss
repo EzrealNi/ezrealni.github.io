@@ -1,0 +1,10 @@
+body {
+  .main {
+    border: 1px solid red;
+    p {
+      &:nth-of-type(2n) {
+        color: red;
+      }
+    }
+  }
+}

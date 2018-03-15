@@ -1,0 +1,225 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  height: 100%; }
+  html body {
+    background-color: #031523;
+    height: 100%; }
+    html body .main {
+      height: 100%; }
+      html body .main .box {
+        position: absolute;
+        top: 124px;
+        left: 538px;
+        width: 842px;
+        height: 903px; }
+        html body .main .box .repository {
+          background: url("../img/box-bg.png") center/100% 100% no-repeat;
+          height: 100%;
+          padding: 0 69px; }
+          html body .main .box .repository .repository-header {
+            height: 46px;
+            line-height: 46px; }
+            html body .main .box .repository .repository-header .title {
+              color: #fff;
+              margin-left: 106px;
+              font-size: 20px; }
+          html body .main .box .repository .repository-search {
+            margin: 34px auto 0;
+            width: 608px;
+            height: 36px;
+            line-height: 36px;
+            background: url("../img/search-bar.png") center/100% 100% no-repeat;
+            font-size: 0; }
+            html body .main .box .repository .repository-search > div {
+              display: inline-block;
+              vertical-align: top;
+              height: 100%; }
+            html body .main .box .repository .repository-search .search-type {
+              width: 103px;
+              cursor: pointer; }
+              html body .main .box .repository .repository-search .search-type .type-label {
+                display: inline-block;
+                vertical-align: top;
+                margin-left: 20px;
+                font-size: 14px;
+                color: #fff; }
+              html body .main .box .repository .repository-search .search-type i.icon-cert {
+                display: inline-block;
+                vertical-align: top;
+                width: 12px;
+                height: 8px;
+                margin-top: 15px;
+                margin-left: 7px;
+                background: url("../img/icon-cert.png") center/100% 100% no-repeat; }
+            html body .main .box .repository .repository-search .search-ipt-container {
+              width: 400px;
+              padding: 0 10px; }
+              html body .main .box .repository .repository-search .search-ipt-container .search-ipt {
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none;
+                font-size: 14px;
+                color: #fff;
+                outline: none; }
+            html body .main .box .repository .repository-search .search-btn-container {
+              width: 105px;
+              cursor: pointer; }
+              html body .main .box .repository .repository-search .search-btn-container i.icon-search {
+                display: inline-block;
+                vertical-align: top;
+                width: 26px;
+                height: 26px;
+                margin-top: 6px;
+                margin-left: 24px;
+                background: url("../img/icon-search.png") center/100% 100% no-repeat; }
+              html body .main .box .repository .repository-search .search-btn-container span {
+                display: inline-block;
+                vertical-align: top;
+                font-size: 14px;
+                color: #03bafd; }
+          html body .main .box .repository .repository-result {
+            margin-top: 22px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            background: url("../img/search-result.png") center/100% 100% no-repeat;
+            font-size: 0; }
+            html body .main .box .repository .repository-result > span {
+              font-size: 16px;
+              color: #fff; }
+              html body .main .box .repository .repository-result > span.num {
+                color: #07a4eb; }
+          html body .main .box .repository .repository-dashboard ul {
+            list-style: none; }
+            html body .main .box .repository .repository-dashboard ul li {
+              margin-top: 23px;
+              height: 188px;
+              padding: 20px 0 15px 25px;
+              overflow: hidden;
+              background: url("../img/pests-description-bg.png") center/100% 100% no-repeat;
+              font-size: 0; }
+              html body .main .box .repository .repository-dashboard ul li .pests-photo {
+                display: inline-block;
+                vertical-align: top;
+                width: 171px;
+                height: 152px;
+                background: url("../img/pests-photo-bg.png") center/100% 100% no-repeat;
+                padding: 3px;
+                text-align: center; }
+                html body .main .box .repository .repository-dashboard ul li .pests-photo img {
+                  width: 165px;
+                  height: 112px; }
+                html body .main .box .repository .repository-dashboard ul li .pests-photo span.pests-name {
+                  color: #fff;
+                  font-size: 14px;
+                  line-height: 40px; }
+              html body .main .box .repository .repository-dashboard ul li .pests-description {
+                display: inline-block;
+                vertical-align: top;
+                height: 100%;
+                overflow: auto;
+                width: 490px;
+                padding: 0 10px 0 25px; }
+                html body .main .box .repository .repository-dashboard ul li .pests-description::-webkit-scrollbar {
+                  width: 6px !important;
+                  height: 6px !important; }
+                html body .main .box .repository .repository-dashboard ul li .pests-description::-webkit-scrollbar-track {
+                  background: rgba(255, 255, 255, 0.22) !important;
+                  border-radius: 8px !important; }
+                html body .main .box .repository .repository-dashboard ul li .pests-description::-webkit-scrollbar-thumb {
+                  background-color: #05b2ff !important;
+                  min-height: 50px;
+                  border-radius: 5px !important; }
+                html body .main .box .repository .repository-dashboard ul li .pests-description .pests-desc {
+                  font-size: 14px;
+                  line-height: 1.5;
+                  color: #fff;
+                  letter-spacing: -1.5px; }
+                  html body .main .box .repository .repository-dashboard ul li .pests-description .pests-desc::before {
+                    content: '介绍';
+                    text-align: center;
+                    display: inline-block;
+                    width: 40px;
+                    height: 18px;
+                    line-height: 18px;
+                    margin-right: 5px;
+                    background: url("../img/description.png"); }
+                html body .main .box .repository .repository-dashboard ul li .pests-description .pests-distributed {
+                  font-size: 14px;
+                  line-height: 1.5;
+                  color: #fff;
+                  letter-spacing: -1.5px; }
+                  html body .main .box .repository .repository-dashboard ul li .pests-description .pests-distributed::before {
+                    content: '分布';
+                    text-align: center;
+                    display: inline-block;
+                    width: 40px;
+                    height: 18px;
+                    line-height: 18px;
+                    margin-right: 5px;
+                    background: url("../img/distributed.png"); }
+                html body .main .box .repository .repository-dashboard ul li .pests-description .harm {
+                  margin-top: 6px;
+                  font-size: 14px;
+                  line-height: 1.5;
+                  color: #fff;
+                  letter-spacing: -2.3px; }
+                  html body .main .box .repository .repository-dashboard ul li .pests-description .harm::before {
+                    content: '危害';
+                    text-align: center;
+                    display: inline-block;
+                    width: 40px;
+                    height: 18px;
+                    line-height: 18px;
+                    margin-right: 5px;
+                    background: url("../img/harm.png"); }
+          html body .main .box .repository .repository-controls {
+            padding: 0 43px;
+            margin-top: 35px;
+            text-align: center; }
+            html body .main .box .repository .repository-controls .pre-page {
+              float: left;
+              width: 130px;
+              height: 40px;
+              line-height: 40px;
+              font-size: 16px;
+              color: #fff;
+              text-align: center;
+              cursor: pointer;
+              background: url("../img/pre-page.png") center/100% 100% no-repeat; }
+            html body .main .box .repository .repository-controls .next-page {
+              float: right;
+              width: 130px;
+              height: 40px;
+              line-height: 40px;
+              font-size: 16px;
+              color: #fff;
+              text-align: center;
+              cursor: pointer;
+              background: url("../img/pre-page.png") center/100% 100% no-repeat; }
+            html body .main .box .repository .repository-controls ul.pagers {
+              display: inline-block;
+              vertical-align: top;
+              list-style: none;
+              font-size: 0; }
+              html body .main .box .repository .repository-controls ul.pagers li.pager {
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 4px;
+                width: 20px;
+                height: 20px;
+                background: url("../img/pager.png") center/100% 100% no-repeat;
+                font-size: 14px;
+                color: #fff;
+                text-align: center;
+                line-height: 20px; }
+                html body .main .box .repository .repository-controls ul.pagers li.pager:not(:nth-of-type(1)) {
+                  margin-left: 20px; }
+                html body .main .box .repository .repository-controls ul.pagers li.pager.active {
+                  background-image: url("../img/pager-active.png"); }

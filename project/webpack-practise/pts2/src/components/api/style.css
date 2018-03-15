@@ -1,0 +1,67 @@
+html{
+  background: url(bg.jpg);
+}
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    '微软雅黑', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.menu{
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding-right: 20px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.menu ul li{
+  margin-top: 10px;
+}
+
+h1,
+h2,
+h3 {
+  color: #1f2f3d;
+  font-weight: 400;
+  line-height: 2;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+  color: #5e6d82;
+  line-height: 2;
+}
+
+pre {
+  font-size: 0;
+  margin: 0px 0 16px 16px;
+}
+
+pre > code.hljs {
+  font-size: 18px;
+  padding: 0 16px;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #7f848e;
+  font-style: normal;
+}

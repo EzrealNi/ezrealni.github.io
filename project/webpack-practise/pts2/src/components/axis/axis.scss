@@ -1,0 +1,30 @@
+.axis {
+  &.bottom {
+    .yAxis.no-boundary-gap {
+      g.tick.split-line.min > line {
+        display: none;
+      }
+    }
+  }
+  &.top {
+    .yAxis.no-boundary-gap {
+      g.tick.split-line.max > line {
+        display: none;
+      }
+    }
+  }
+  &.left {
+    .xAxis.no-boundary-gap {
+      g.tick.split-line.min > line {
+        display: none;
+      }
+    }
+  }
+  &.right {
+    .xAxis.no-boundary-gap {
+      g.tick.split-line.max > line {
+        display: none;
+      }
+    }
+  }
+}
