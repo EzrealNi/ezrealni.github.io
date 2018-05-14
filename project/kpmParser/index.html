@@ -115,7 +115,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 				try {
 					var urlParams = url.split('&');
 					if(urlParams.length === 1){
-					   urlParams = urlParams.split('?');
+					   urlParams = urlParams[0].split('?');
 					}
 					var kpm = '';
 					urlParams.forEach(function (p) {
