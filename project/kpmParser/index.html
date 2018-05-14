@@ -114,6 +114,9 @@ Released under the MIT license: http://jsbin.mit-license.org
 				var kpms = [];
 				try {
 					var urlParams = url.split('&');
+					if(urlParams.length === 1){
+					   urlParams = urlParams.split('?');
+					}
 					var kpm = '';
 					urlParams.forEach(function (p) {
 						var _split = {
