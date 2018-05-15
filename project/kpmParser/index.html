@@ -1,12 +1,4 @@
 <!DOCTYPE html>
-<!--
-Created using JS Bin
-http://jsbin.com
-
-Copyright (c) 2018 by EzrealNi (http://jsbin.com/buwegug/2/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
 <meta name="robots" content="noindex">
 <html>
 
@@ -113,10 +105,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 				var url = $("#text-adaption").val().trim();
 				var kpms = [];
 				try {
-					var urlParams = url.split('&');
-					if(urlParams.length === 1){
-					   urlParams = urlParams[0].split('?');
-					}
+					var urlParams = url.split('?').join('&').split('&');
 					var kpm = '';
 					urlParams.forEach(function (p) {
 						var _split = {
