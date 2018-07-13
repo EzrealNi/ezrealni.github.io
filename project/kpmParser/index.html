@@ -21,7 +21,6 @@
 			border-radius: 3px;
 			box-sizing: border-box;
 		}
-
 		.btn {
 			display: inline-block;
 			padding: 6px 12px;
@@ -49,11 +48,9 @@
 			border-color: #ccc;
 			outline: none;
 		}
-
 		.kpm-value {
 			color: green;
 		}
-
 		#parse-error {
 			display: none;
 			color: #ff0000;
@@ -99,7 +96,6 @@
 			$("#text-adaption").keyup(function () {
 				autoTextarea(this);
 			});
-
 			$('#btn-parse').click(function () {
 				$('#parse-error').hide();
 				var url = $("#text-adaption").val().trim();
@@ -124,13 +120,12 @@
 				}
 				var values = [];
 				kpms.forEach(function (kpm, i) {
-					if (i < 3) {
+					if (!Number(kpm)) {
 						values.push(Base64.decode(decodeURIComponent(kpm)))
 					} else {
 						values.push(kpm)
 					}
 				});
-
 				if (values.length === 0) {
 					$('#parse-error').show();
 				}
@@ -141,60 +136,50 @@
 				$('#kpm-E').text(values[4] || '')
 			})
 		});
-
 		var Base64 = {
 			// private property
 			_keyStr: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
-
 			// public method for encoding
 			encode(input) {
 				let output = '';
 				let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
 				let i = 0;
 				input = Base64._utf8_encode(input);
-
 				while (i < input.length) {
 					chr1 = input.charCodeAt(i++);
 					chr2 = input.charCodeAt(i++);
 					chr3 = input.charCodeAt(i++);
-
 					enc1 = chr1 >> 2;
 					enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
 					enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
 					enc4 = chr3 & 63;
-
 					if (isNaN(chr2)) {
 						enc3 = enc4 = 64;
 					} else if (isNaN(chr3)) {
 						enc4 = 64;
 					}
-
 					output = output +
 						this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
 						this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
 				}
 				return output;
 			},
-
 			// public method for decoding
 			decode(input) {
 				let output = '';
 				let chr1, chr2, chr3;
 				let enc1, enc2, enc3, enc4;
 				let i = 0;
-
 				input = input.replace(/[^A-Za-z0-9\+\/\=]/g, ''); //eslint-disable-line
 				while (i < input.length) {
 					enc1 = this._keyStr.indexOf(input.charAt(i++));
 					enc2 = this._keyStr.indexOf(input.charAt(i++));
 					enc3 = this._keyStr.indexOf(input.charAt(i++));
 					enc4 = this._keyStr.indexOf(input.charAt(i++));
-
 					chr1 = (enc1 << 2) | (enc2 >> 4);
 					chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
 					chr3 = ((enc3 & 3) << 6) | enc4;
 					output = output + String.fromCharCode(chr1);
-
 					if (enc3 != 64) {
 						output = output + String.fromCharCode(chr2);
 					}
@@ -205,7 +190,6 @@
 				output = Base64._utf8_decode(output);
 				return output;
 			},
-
 			// private method for UTF-8 encoding
 			_utf8_encode(string) { //eslint-disable-line
 				if (typeof string == 'string') {
@@ -230,14 +214,11 @@
 				}
 				return utftext;
 			},
-
 			// private method for UTF-8 decoding
-
 			_utf8_decode(utftext) { //eslint-disable-line
 				let string = '';
 				let i = 0;
 				let c = 0, c2 = 0, c3 = 0; /*eslint-disable-line*/
-
 				while (i < utftext.length) {
 					c = utftext.charCodeAt(i);
 					if (c < 128) {
@@ -257,7 +238,6 @@
 				return string;
 			}
 		};
-
 		var autoTextarea = function (elem, extra, maxHeight) {
 			extra = extra || 0;
 			var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
@@ -282,20 +262,16 @@
 					},
 				minHeight = parseFloat(getStyle('height'));
 			elem.style.resize = 'both';//如果不希望使用者可以自由的伸展textarea的高宽可以设置其他值
-
 			var change = function () {
 				var scrollTop, height,
 					padding = 0,
 					style = elem.style;
-
 				if (elem._length === elem.value.length) return;
 				elem._length = elem.value.length;
-
 				if (!isFirefox && !isOpera) {
 					padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
 				};
 				scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-
 				elem.style.height = minHeight + 'px';
 				if (elem.scrollHeight > minHeight) {
 					if (maxHeight && elem.scrollHeight > maxHeight) {
@@ -312,7 +288,6 @@
 					elem.currHeight = parseInt(style.height);
 				};
 			};
-
 			addEvent('propertychange', change);
 			addEvent('input', change);
 			addEvent('focus', change);
