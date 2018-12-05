@@ -16,4 +16,4 @@ function getCookie(name) {
     else return null;
 }
 
-// setCookie('unionID', '123456');
+setCookie('unionID', '123456');
