@@ -1,4 +1,4 @@
-//document.querySelector('#app-1 .content img').style.filter = 'blur(5px)';
+document.querySelector('#app-1 .content img').style.filter = 'blur(5px)';
 
 // alert(document.cookie);
 
@@ -16,4 +16,4 @@ function getCookie(name) {
     else return null;
 }
 
-setCookie('unionID', '123456');
+// setCookie('unionID', '123456');
