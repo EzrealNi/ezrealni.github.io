@@ -1,48 +1,247 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=1080">
-	<title>Star</title>
-	<link href="stars/plugins/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="stars/css/star.css" rel="stylesheet" type="text/css">
-</head>
-<body ng-controller="Ctrl">
-	<div class="fav-list">
-		<div ng-repeat="img in imgs" style="flex-grow:{{img.width*100/img.height}};flex-basis:{{img.width*240/img.height}}px;">
-			<i style="padding-bottom:{{img.height/img.width*100}}%"></i>
-			<img ng-src="{{img.url}}"/>
-		</div>
-		<div ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]" class="placeholder"></div>
-	</div>
-	
-	<div id="imgDashboard" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<img id="showImg"/>
-			</div>
-		</div>
-	</div>
-	
-	<div class="loading-zone" id="progress-loading-l" ng-show="loading">
-		<div class="text">loading...{{loadingProgress}}%</div>
-		<div class="progress progress-striped active">
-			<div ng-style="loadingPercent" class="bar"></div>
-		</div>
-	</div>
-	
-	<div class="row" id="progress-loading" ng-show="progress">
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="spinner"></div>
-<!-- 			<div style="display: inline-block; height: 100%; width: 178px; position: relative; left: 48%;" class="progress progress-xs progress-striped active"> -->
-<!--             	<div class="progress-bar progress-bar-primary" style="width: 100%">Loading the next 20 records</div> -->
-<!--             </div> -->
-		</div>
-	</div>
+<!--
+Created using JS Bin
+http://js.jirengu.com
 
-	<script src="stars/plugins/jquery/jquery-3.0.0.min.js"></script>
-	<script src="stars/plugins/angular/angular.min.js"></script>
-	<script src="stars/plugins/bootstrap/bootstrap.min.js"></script>
-	<script type="text/javascript" src="stars/js/star-baidu.js"></script>
+Copyright (c) 2019 by EzrealNi (http://js.jirengu.com/towod/49/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  overflow: hidden;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+html,body{
+  height: 100%;
+}
+
+.box{
+  height: 100%;
+  padding: 0.2rem;
+}
+
+.box-inner{
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000000;
+  position: relative;
+}
+
+.ball{
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: blue;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.board{
+  width: 2.1rem;
+  height: 0.7rem;
+  background-color: green;
+  position: absolute;
+  bottom: 2.5rem;
+}
+
+.to-left{
+  width: 0;
+  height: 0;
+  border-top: 0.8rem solid transparent;
+  border-right: 1.6rem solid yellow;
+  border-bottom: 0.8rem solid transparent;
+  position: absolute;
+  left: 0.3rem;
+  bottom: 0.3rem;
+}
+
+.to-right{
+  width: 0;
+  height: 0;
+  border-top: 0.8rem solid transparent;
+  border-left: 1.6rem solid yellow;
+  border-bottom: 0.8rem solid transparent;
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0.3rem;
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="box-inner">
+      <div class="ball">
+      </div>
+      <div class="board">
+      </div>
+      <div class="to-left">
+      </div>
+      <div class="to-right">
+      </div>
+    </div>
+  </div>
+<script id="jsbin-javascript">
+let [boardLeftInterval, boardRightInterval] = [];
+
+const $ = (el)=>{
+  return document.querySelector(el);
+}
+
+const log = (content) => {
+  alert(content)
+}
+
+const play = {
+  bindListener(){
+    $('.to-right').addEventListener("touchstart", (event)=>{
+      play.boardStartMove(1)
+      event.preventDefault();
+    }, false);
+    
+    $('.to-right').addEventListener("touchend", ()=>{
+      alert('touchend')
+      play.boardPauseMove(1);
+    }, false);
+    
+    $('.to-left').addEventListener("touchstart", (event)=>{
+      play.boardStartMove(-1);
+      event.preventDefault();
+    }, false);
+    
+    $('.to-left').addEventListener("touchend", ()=>{
+      play.boardPauseMove(-1);
+    }, false);
+  },
+  boardStartMove(type){
+    if(type === -1 && !boardLeftInterval){
+      boardLeftInterval = setInterval(()=>{
+        play.boardMove(type);
+      }, 1000 / 60)
+    }
+    
+    if(type === 1 && !boardRightInterval){
+      boardRightInterval = setInterval(()=>{
+        play.boardMove(type);
+      }, 1000 / 60)
+    }
+  },
+  boardPauseMove(type){
+    if(type === -1 && boardLeftInterval){
+      clearInterval(boardLeftInterval);
+      boardLeftInterval = null;
+    }
+    
+    
+    if(type === 1 && boardRightInterval){
+      clearInterval(boardRightInterval);
+      boardRightInterval = null;
+    }
+  },
+  boardMove(type){
+    const {config: {speedBoard, boardX, boardW, boxW}} = play;
+    const range = [0, boxW - boardW];
+    let currentX = boardX + type * speedBoard;
+    if(currentX < range[0]){
+      currentX = range[0];
+    }else if(currentX > range[1]){
+      currentX = range[1];
+    }
+    
+    $('.board').style.left = currentX + 'px';
+    play.config.boardX = currentX;
+  },
+  setConfig(){
+    play.config = {
+      speedX: 5,
+      speedY: 5,
+      speedBoard: 15,
+      boardX: 0,
+      x: 0,
+      y: 0,
+      ballW: $('.ball').clientWidth,
+      ballH: $('.ball').clientHeight,
+      boardW: $('.board').clientWidth,
+      boardH: $('.board').clientHeight,
+      boxW: $('.box-inner').clientWidth,
+      boxH: $('.box-inner').clientHeight,
+      
+    } 
+  },
+  start(){
+    play.bindListener();
+    play.setConfig();
+    play.runBall();
+  },
+  runBall(){
+    setInterval(
+      ()=>{
+        play.run()
+      },
+      1000 / 60
+    )
+  },
+  run(){
+    const {config: {x, y, speedX, speedY, ballW, ballH, boxW, boxH}} = play;
+     
+    const [maxX, maxY] = [boxW - ballW, boxH - ballH]
+    const currentX = x + speedX;
+    const currentY = y + speedY;
+    const $ball = $('.ball');
+    $ball.style.left = currentX + 'px';
+    $ball.style.top = currentY + 'px';
+  
+    play.config.x = currentX;
+    play.config.y = currentY;
+    if(currentX >= maxX || currentX <= 0){
+      play.config.speedX = speedX * -1;
+    }
+    if(currentY >= maxY || currentY <= 0){
+      play.config.speedY = speedY * -1;
+    }
+  }
+  
+}
+
+window.onload = ()=>{
+  play.start();
+}
+
+!(function(doc, win) {
+   var docEle = doc.documentElement,
+       event = "onorientationchange" in window ? "orientationchange" : "resize",
+       fn = function() {
+         var width = docEle.clientWidth;
+         width && (docEle.style.fontSize = 100  * (width / 750) + "px");
+       };
+
+   win.addEventListener(event, fn, false);
+   doc.addEventListener("DOMContentLoaded", fn, false);
+
+ }(document, window));
+
+// 如果是想禁用长按弹出菜单, 用js
+window.addEventListener('contextmenu', function(e){
+	e.preventDefault();
+});
+
+</script>
 </body>
 </html>
